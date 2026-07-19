@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #333333;
+  --pts-navy: #15399b;
+  --pts-logo-blue: #27348b;
+  --pts-nav: #222222;
+  --pts-success: #2f7f6b;
+  --pts-success-hover: #256353;
+  --pts-danger: #dc3545;
+  --pts-secondary: #e01b1b;
+  --pts-star: #ffc700;
+  --pts-rating-bg: #fff9e4;
+  --pts-card-border: #d0d0d0;
+  --pts-badge-combo: #f06a6a;
+  --pts-badge-recommended: #537ce8;
+  --pts-muted: #888888;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-open-sans), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  --font-display: var(--font-league-spartan), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  --font-poppins: var(--font-poppins), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-open-sans), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 16px;
+}
+
+/* Must stay in @layer base so Tailwind color utilities (text-white, etc.) win.
+   An unlayered `a { color: inherit }` was overriding button/link text colors. */
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+.pts-container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  max-width: 540px;
+}
+
+@media (min-width: 576px) {
+  .pts-container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .pts-container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .pts-container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .pts-container {
+    max-width: 1140px;
+  }
+}
+
+.font-display {
+  font-family: var(--font-league-spartan), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+}
+
+.font-poppins {
+  font-family: var(--font-poppins), "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+}
+
+/* Match live site heading blue exactly */
+.text-pts-navy,
+.text-blue-900 {
+  color: #15399b;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Animations matching paristicketshop.com (WOW.js + animate.css fadeInUp)    */
+/* -------------------------------------------------------------------------- */
+
+body:not(.disable-animations) .wow:not(.started-animation) {
+  opacity: 0;
+}
+
+.hero-content {
+  text-shadow:
+    0 0 3px rgba(255, 255, 255, 0.8),
+    0 0 10px rgba(255, 255, 255, 0.9),
+    0 0 20px rgba(255, 255, 255, 0.9),
+    0 0 30px rgba(255, 255, 255, 0.9);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.animated.fadeInUp {
+  animation-name: fadeInUp;
+  animation-timing-function: ease;
+}
+
+.animated.fadeIn {
+  animation-name: fadeIn;
+  animation-timing-function: ease;
+}
+
+/* Product image soft reveal (site uses .lazyload → .lazyloading opacity fade) */
+.pts-lazy-image {
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.pts-lazy-image.is-loaded {
+  opacity: 1;
+}
+
+/* Product feature icons — match live .properties-wrap svg rules */
+.properties-wrap .image-wrap svg,
+.properties-wrap .image-wrap svg * {
+  fill: #333;
+  stroke: #333;
+  max-height: 16px;
+}
+
+/* Interactive hover transitions used across the original UI */
+.pts-nav-link,
+.pts-availability-btn,
+.pts-view-all-btn,
+.pts-carousel-btn {
+  transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
+    opacity 0.15s ease-in-out,
+    transform 0.15s ease-in-out;
+}
+
+.pts-carousel-btn:hover:not(:disabled) {
+  background-color: #15399b;
+  color: #fff;
+}
+
+.pts-availability-btn {
+  color: #fff !important;
+}
+
+.pts-availability-btn:hover {
+  background-color: var(--pts-success-hover);
+  border-color: #215a4c;
+  color: #fff !important;
+}
+
+.pts-view-all-btn {
+  color: var(--pts-secondary) !important;
+}
+
+.pts-view-all-btn:hover {
+  background-color: var(--pts-secondary);
+  border-color: var(--pts-secondary);
+  color: #fff !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wow:not(.started-animation) {
+    opacity: 1;
+  }
+
+  .animated,
+  .animated.fadeInUp,
+  .animated.fadeIn {
+    animation: none !important;
+  }
+
+  .pts-lazy-image {
+    opacity: 1;
+    transition: none;
+  }
+}

@@ -1,0 +1,911 @@
+<style>
+  @media (max-width: 991px) {
+    /* DivMagic Note: Tailwind does not support max-width. We will fix this soon. */
+
+    #li-1 {
+      width: 100% !important;
+    }
+    #li-2 {
+      width: 100% !important;
+    }
+    #li-3 {
+      width: 100% !important;
+    }
+    #li-4 {
+      width: 100% !important;
+    }
+    #li-5 {
+      width: 100% !important;
+    }
+  }
+  @media (max-width: 576px) {
+    /* DivMagic Note: Tailwind does not support max-width. We will fix this soon. */
+
+    #a-1 {
+      padding: 10px !important;
+    }
+    #a-2 {
+      padding: 10px !important;
+    }
+    #a-3 {
+      padding: 10px !important;
+    }
+    #a-4 {
+      padding: 10px !important;
+    }
+    #a-5 {
+      padding: 10px !important;
+    }
+    #a-6 {
+      padding: 10px !important;
+    }
+  }
+</style>
+<div style="column-rule-width: 4px; outline-width: 4px; overflow-block: visible; overflow-inline: visible;" class="box-border text-zinc-800 flex-col h-[112.13rem] leading-6 min-h-full w-[119.13rem] flex bg-white">
+  <span class="w-[119.13rem]"></span>
+
+  <div class="h-24 sticky w-[119.13rem] z-[1020]">
+    <div class="h-24 max-w-[77.50rem] px-4 w-full m-auto min-[576px]:max-w-[33.75rem] md:max-w-[45.00rem] min-[992px]:max-w-[60.00rem] min-[1200px]:max-w-[71.25rem]">
+      <div class="h-24 w-[75.63rem]">
+        <div class="h-24 w-[75.63rem]">
+          <nav class="items-center h-24 justify-between py-5 relative w-full flex min-[992px]:flex-row min-[992px]:justify-end md:pt-5 md:pr-0 md:pb-5 md:pl-0">
+            <a href="https://paristicketshop.com" class="text-white cursor-pointer h-14 mr-4 max-w-[7.25rem] w-full inline-block md:max-w-[7.19rem]">
+              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 637.04 317.85" fill="rgb(0, 0, 0)" style="overflow-block: hidden; overflow-inline: hidden;" class="h-14 align-middle w-full inline overflow-hidden">
+                <defs fill="rgb(0, 0, 0)" style="overflow-block: visible; overflow-inline: visible;"></defs>
+                <g fill="rgb(0, 0, 0)" style="overflow-block: visible; overflow-inline: visible;">
+                  <path d="M6.29,155.2l-1.97-6.76C1.38,137.2-.2,126.04.33,115.71c1.74-34.22,25.99-53.33,49.25-68.69,16.81-11.1,34.82-20.67,49.65-34.24,4.43-4.06,8.53-8.45,12.83-12.67.12-.12.16-.15.38-.06,1.66,8.01,3.34,16.05,4.49,23.97,1.19,8.27,1.81,15.39.66,22.83-3.48,22.46-17.32,37.86-32.83,49.93-22.83,17.77-50.11,29.91-70.8,50.29-2.34,2.31-4.55,4.73-6.84,7.08-.29.29-.53.74-.81,1.05Z" fill="rgb(190, 22, 34)"></path>
+                  <path d="M6.06,236.64l-1.97-6.76C1.15,218.65-.43,207.49.1,197.16c1.74-34.22,25.99-53.33,49.25-68.69,16.81-11.1,34.82-20.67,49.65-34.24,4.43-4.06,8.53-8.45,12.83-12.67.12-.12.16-.15.38-.06,1.66,8.01,3.34,16.05,4.49,23.97,1.19,8.27,1.81,15.39.66,22.83-3.48,22.46-17.32,37.86-32.83,49.93-22.83,17.77-50.11,29.91-70.8,50.29-2.34,2.31-4.55,4.73-6.84,7.08-.29.29-.53.74-.81,1.05Z" fill="rgb(237, 237, 237)"></path>
+                  <path d="M6.12,317.85l-1.97-6.76c-2.93-11.24-4.51-22.39-3.98-32.72,1.74-34.22,25.99-53.33,49.25-68.69,16.81-11.1,34.82-20.67,49.65-34.24,4.43-4.06,8.53-8.45,12.83-12.67.12-.12.16-.15.38-.06,1.66,8.01,3.34,16.05,4.49,23.97,1.19,8.27,1.81,15.39.66,22.83-3.48,22.46-17.32,37.86-32.83,49.93-22.83,17.77-50.11,29.91-70.8,50.29-2.34,2.31-4.55,4.73-6.84,7.08-.29.29-.53.74-.81,1.05Z" fill="rgb(39, 52, 139)"></path>
+                  <path d="M181.19,172.57V62.61h42.2c12.67,0,22.73,3.05,30.16,9.14,7.43,6.09,11.14,15.09,11.14,27s-3.72,20.85-11.14,27c-7.43,6.15-17.48,9.22-30.16,9.22h-15.81v37.61h-26.39ZM207.58,112.02h15.81c4.75,0,8.34-1.32,10.78-3.97,2.43-2.65,3.65-5.75,3.65-9.3s-1.22-6.75-3.65-9.42c-2.43-2.68-6.02-4.02-10.78-4.02h-15.81v26.71Z" fill="rgb(39, 52, 139)"></path>
+                  <path d="M263.71,172.57l37.04-109.97h33.35l34.99,109.97h-27.62l-5.98-19.34h-37.94l-5.98,19.34h-27.86ZM304.19,133.81h25.32l-12.46-40.23-12.87,40.23Z" fill="rgb(39, 52, 139)"></path>
+                  <path d="M385.88,172.57V62.61h42.94c13.77,0,24.46,3.15,32.08,9.46,7.62,6.31,11.43,14.76,11.43,25.36s-3.81,18.7-11.43,24.95c-7.62,6.26-18.31,9.38-32.08,9.38h-16.72v40.81h-26.22ZM412.11,114.72h13.77c6.5,0,11.38-1.35,14.63-4.06,3.25-2.7,4.88-6.16,4.88-10.37s-1.38-7.96-4.14-10.78c-2.76-2.81-6.9-4.22-12.42-4.22h-16.72v29.42ZM443.25,172.57l-26.8-53.1h27.7l33.43,53.1h-34.33Z" fill="rgb(39, 52, 139)"></path>
+                  <path d="M496.67,172.57V62.61h26.22v109.97h-26.22Z" fill="rgb(39, 52, 139)"></path>
+                  <path d="M592.14,175.2c-7.87,0-15.16-1.33-21.88-3.97-6.72-2.65-12.18-6.8-16.39-12.46-4.21-5.65-6.53-13.02-6.96-22.08h25.89c0,3.33.85,6.09,2.54,8.28,1.69,2.19,4,3.8,6.92,4.83,2.92,1.04,6.16,1.56,9.71,1.56,2.84,0,5.5-.25,7.99-.74,2.49-.49,4.49-1.36,6.02-2.62,1.53-1.26,2.29-2.98,2.29-5.16,0-2.68-.81-4.67-2.42-5.98-1.61-1.31-4.52-2.81-8.73-4.51l-23.93-10.41c-7.87-3.39-13.99-7.38-18.36-11.96-4.37-4.59-6.56-10.84-6.56-18.77,0-9.29,3.78-16.78,11.35-22.49,7.57-5.71,17.93-8.56,31.1-8.56s23.65,3.15,30.81,9.46c7.16,6.31,11.17,15.31,12.05,27h-25.73c-.66-3.61-2.25-6.64-4.79-9.1-2.54-2.46-6.65-3.69-12.33-3.69-4.1,0-7.4.75-9.92,2.25-2.51,1.5-3.77,3.37-3.77,5.61,0,2.08.81,3.72,2.42,4.92,1.61,1.2,4.03,2.51,7.25,3.93l25.32,10.73c8.41,3.66,14.68,7.95,18.81,12.87,4.12,4.92,6.19,10.82,6.19,17.7,0,7.38-1.76,13.53-5.29,18.48-3.52,4.94-8.63,8.66-15.32,11.14-6.69,2.49-14.79,3.73-24.3,3.73Z" fill="rgb(39, 52, 139)"></path>
+                  <path d="M181.76,210.31v-5.25h38.3v5.25h-17.5l1.37-1.41v45.35h-6.11v-45.35l1.37,1.41h-17.43Z" fill="rgb(29, 29, 27)"></path>
+                  <path d="M228.4,254.24v-49.19h6.11v49.19h-6.11Z" fill="rgb(29, 29, 27)"></path>
+                  <path d="M267.4,255.18c-4.33,0-8.07-1.09-11.2-3.27s-5.55-5.21-7.24-9.09c-1.7-3.88-2.55-8.37-2.55-13.49,0-5.46.92-10.05,2.76-13.79,1.84-3.73,4.35-6.56,7.52-8.48,3.17-1.92,6.74-2.88,10.71-2.88,5.25,0,9.47,1.31,12.67,3.94,3.2,2.62,5.4,6.04,6.6,10.24l-6.58,1.33c-1.02-3.05-2.64-5.49-4.88-7.3-2.23-1.81-4.84-2.72-7.81-2.72-2.58,0-4.97.74-7.15,2.21-2.18,1.48-3.94,3.67-5.27,6.6-1.33,2.92-2,6.54-2,10.85,0,3.92.53,7.4,1.59,10.46,1.06,3.05,2.65,5.46,4.78,7.21,2.13,1.75,4.81,2.62,8.05,2.62,3.89,0,6.98-1.04,9.26-3.13,2.28-2.09,3.43-4.83,3.43-8.22h6.66c0,3.52-.81,6.55-2.43,9.07-1.62,2.52-3.88,4.46-6.79,5.82s-6.29,2.04-10.12,2.04Z" fill="rgb(29, 29, 27)"></path>
+                  <path d="M298.34,205.06h6.19v49.19h-6.19v-49.19ZM326.61,205.06h8.46l-31.41,32.35v-8.62l22.95-23.73ZM312.51,225.81l23.89,28.43h-7.99l-20.29-24.44,4.39-3.99Z" fill="rgb(29, 29, 27)"></path>
+                  <path d="M345.84,254.24v-49.19h30.31v5.25h-24.2v16.53h22.79v5.25h-22.79v16.84h24.2v5.33h-30.31Z" fill="rgb(29, 29, 27)"></path>
+                  <path d="M382.49,210.31v-5.25h38.3v5.25h-17.5l1.37-1.41v45.35h-6.11v-45.35l1.37,1.41h-17.43Z" fill="rgb(29, 29, 27)"></path>
+                  <path d="M463.48,255.18c-3.29,0-6.31-.59-9.05-1.78-2.74-1.19-4.95-2.94-6.62-5.27-1.67-2.32-2.53-5.2-2.58-8.62h5.95c0,2.3.56,4.18,1.68,5.66,1.12,1.48,2.61,2.57,4.46,3.29,1.85.72,3.88,1.08,6.07,1.08,2.38,0,4.44-.38,6.19-1.14s3.1-1.76,4.05-3c.95-1.24,1.43-2.6,1.43-4.09,0-2.09-.64-3.78-1.92-5.07-1.28-1.29-3.17-2.34-5.68-3.15l-8.69-3.05c-4.07-1.46-7.15-3.13-9.24-5.01-2.09-1.88-3.13-4.52-3.13-7.91,0-3.81,1.47-6.92,4.41-9.32,2.94-2.4,7.11-3.6,12.51-3.6,5.01,0,8.93,1.16,11.75,3.47,2.82,2.31,4.44,5.41,4.86,9.3h-6.03c-.39-2.27-1.46-4.04-3.19-5.31-1.74-1.27-4.2-1.9-7.38-1.9s-5.76.72-7.56,2.15c-1.8,1.44-2.7,3.25-2.7,5.44,0,1.8.57,3.23,1.7,4.29s2.92,2,5.35,2.84l10.18,3.52c3.52,1.17,6.31,2.82,8.36,4.93s3.07,4.86,3.07,8.22c0,2.61-.7,4.97-2.09,7.09-1.4,2.12-3.45,3.8-6.17,5.05-2.72,1.25-6.04,1.88-9.99,1.88Z" fill="rgb(29, 29, 27)"></path>
+                  <path d="M495.08,205.06h6.11v21.7h24.36v-21.7h6.03v49.19h-6.03v-22.24h-24.36v22.24h-6.11v-49.19Z" fill="rgb(29, 29, 27)"></path>
+                  <path d="M564.82,255.18c-4.07,0-7.71-.94-10.93-2.82s-5.74-4.71-7.6-8.48c-1.85-3.77-2.78-8.49-2.78-14.16s.93-10.5,2.78-14.27c1.85-3.77,4.39-6.59,7.6-8.46,3.21-1.87,6.85-2.8,10.93-2.8s7.71.94,10.93,2.82c3.21,1.88,5.74,4.71,7.6,8.5,1.85,3.79,2.78,8.52,2.78,14.22s-.93,10.46-2.78,14.23c-1.85,3.77-4.39,6.59-7.6,8.44-3.21,1.85-6.85,2.78-10.93,2.78ZM564.82,249.54c4.62,0,8.27-1.68,10.95-5.05,2.68-3.37,4.01-8.32,4.01-14.84s-1.34-11.32-4.01-14.78-6.32-5.19-10.95-5.19-8.2,1.74-10.91,5.21c-2.7,3.47-4.05,8.42-4.05,14.84s1.35,11.43,4.05,14.78,6.34,5.03,10.91,5.03Z" fill="rgb(29, 29, 27)"></path>
+                  <path d="M597.83,254.24v-49.19h15.82c5.4,0,9.54,1.37,12.39,4.09,2.86,2.73,4.29,6.43,4.29,11.1s-1.43,8.28-4.29,10.99c-2.86,2.7-6.99,4.05-12.39,4.05h-9.63v18.95h-6.19ZM604.02,229.96h9.63c3.42,0,6.01-.87,7.77-2.62,1.76-1.75,2.64-4.11,2.64-7.09s-.88-5.44-2.64-7.24c-1.76-1.8-4.35-2.7-7.77-2.7h-9.63v19.66Z" fill="rgb(29, 29, 27)"></path>
+                </g>
+              </svg>
+            </a>
+
+            <div class="items-center flex-grow h-12 w-[53.63rem] hidden min-[992px]:flex">
+              <ul class="flex-col h-12 mr-auto pt-6 w-[43.88rem] flex list-none min-[992px]:flex-row min-[992px]:pt-0">
+                <li class="items-center h-12 px-1 w-40 flex" id="li-1">
+                  <a href="https://paristicketshop.com/top-attractionss" class="text-neutral-800 cursor-pointer text-[1.38rem] leading-7 h-12 leading-8 py-2 px-3 relative w-full rounded-lg min-[992px]:pr-2 min-[992px]:pl-2">
+                    <span> Top Attractions </span>
+                  </a>
+                </li>
+                <li class="items-center h-12 px-1 w-44 flex" id="li-2">
+                  <a href="https://paristicketshop.com/versailles-palace" class="text-neutral-800 cursor-pointer text-[1.38rem] leading-7 h-12 leading-8 py-2 px-3 relative w-full rounded-lg min-[992px]:pr-2 min-[992px]:pl-2">
+                    <span> Versailles Palace </span>
+                  </a>
+                </li>
+                <li class="items-center h-12 px-1 w-40 flex" id="li-3">
+                  <a href="https://paristicketshop.com/the-eiffel-tower" class="text-neutral-800 cursor-pointer text-[1.38rem] leading-7 h-12 leading-8 py-2 px-3 relative w-full rounded-lg min-[992px]:pr-2 min-[992px]:pl-2">
+                    <span> The Eiffel Tower </span>
+                  </a>
+                </li>
+                <li class="items-center h-12 px-1 w-24 flex" id="li-4">
+                  <a href="https://paristicketshop.com/paris-boat-tour" class="text-neutral-800 cursor-pointer text-[1.38rem] leading-7 h-12 leading-8 py-2 px-3 relative w-full rounded-lg min-[992px]:pr-2 min-[992px]:pl-2">
+                    <span> Cruises </span>
+                  </a>
+                </li>
+                <li class="items-center h-12 px-1 w-32 flex" id="li-5">
+                  <a href="https://paristicketshop.com/louvre-tickets" class="text-neutral-800 cursor-pointer text-[1.38rem] leading-7 h-12 leading-8 py-2 px-3 relative w-full rounded-lg min-[992px]:pr-2 min-[992px]:pl-2">
+                    <span> The Louvre </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="items-center h-10 w-56 hidden min-[992px]:flex">
+              <a href="https://paristicketshop.com/search" class="cursor-pointer h-6 w-5 m-5">
+                <i class="text-lg h-5 leading-[1.13rem] relative w-5 inline-block"></i>
+              </a>
+              <div class="h-10 w-20 hidden min-[992px]:inline-block">
+                <div class="h-10 w-20">
+                  <div class="h-10 w-20">
+                    <div class="h-10 w-20">
+                      <div class="h-10 relative w-20">
+                        <button style="appearance: button;" class="text-neutral-800 cursor-pointer h-10 py-1.5 px-1 text-center select-none align-middle w-20 inline-block rounded-lg md:pr-2 md:pl-2"><img src="https://paristicketshop.com/storage/flags/thumb/united-kingdom_991x991.webp" style="aspect-ratio: auto 24 / 16; overflow-block: clip; overflow-clip-margin: content-box; overflow-inline: clip;" class="h-4 mr-1 -mt-1 w-6 hidden rounded overflow-clip min-[330px]:inline-block" /> EN</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="h-10 w-20 hidden min-[992px]:inline-block">
+                <div class="h-10 w-full">
+                  <div class="h-10 w-20">
+                    <div class="h-10 w-20">
+                      <form action="https://paristicketshop.com/module/action/20" class="w-20"></form>
+
+                      <div class="h-10 relative w-20">
+                        <button style="appearance: button;" class="text-neutral-800 cursor-pointer h-10 py-1.5 px-1 text-center select-none align-middle w-20 inline-block rounded-lg md:pr-2 md:pl-2">€ EUR</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="h-[31.25rem] w-[119.13rem]">
+    <div class="h-[31.25rem] w-[119.13rem]">
+      <div class="h-[31.25rem] w-[119.13rem]">
+        <div class="h-[31.25rem] w-[119.13rem]">
+          <div class="h-[31.25rem] w-[119.13rem]">
+            <div class="h-[31.25rem] relative w-[119.13rem]">
+              <div style="overflow-block: hidden; overflow-inline: hidden;" class="h-[31.25rem] relative w-full overflow-hidden">
+                <div style="backface-visibility: hidden; overflow-block: visible; overflow-inline: visible;" class="bg-neutral-200 float-left h-[31.25rem] mr-[-100%] relative w-full">
+                  <picture class="h-full object-cover absolute w-full">
+                    <source srcset="https://paristicketshop.com/storage/editor/shutterstock-705219370.webp" />
+                    <source srcset="https://paristicketshop.com/storage/editor/thumb/shutterstock-705219370_991x991.webp" />
+                    <img src="https://paristicketshop.com/storage/editor/list/shutterstock-705219370_576x576.webp" style="overflow-block: clip; overflow-clip-margin: content-box; overflow-inline: clip;" class="h-full absolute w-full overflow-clip" />
+                  </picture>
+
+                  <div class="h-full max-w-[77.50rem] px-4 w-full m-auto min-[576px]:max-w-[33.75rem] md:max-w-[45.00rem] min-[992px]:max-w-[60.00rem] min-[1200px]:max-w-[71.25rem]">
+                    <div class="flex-wrap h-full w-[77.50rem] flex -m-3.5">
+                      <div style="flex-shrink: 0;" class="items-end basis-full h-full justify-center order-1 px-4 relative w-full flex min-[576px]:items-start">
+                        <div class="text-blue-900 text-[4.00rem] leading-none font-semibold h-80 leading-[4.00rem] py-12 w-full md:pt-12 md:pr-0 md:pb-12 md:pl-0">
+                          <div class="h-48 w-[75.63rem]">
+                            <p class="h-48 mb-4 w-[75.63rem]"><span class="h-16 w-[75.63rem]">The best Paris</span><span class="h-16 w-[75.63rem]">Experiences you'll </span><span class="h-16 w-[75.63rem]">never forget!</span></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="h-[54.63rem] py-6 w-[119.13rem]">
+    <div></div>
+
+    <div class="h-[51.63rem] w-[119.13rem]">
+      <div class="h-[51.63rem] pb-20 w-[119.13rem] md:pb-20">
+        <div class="h-[46.88rem] max-w-[77.50rem] px-4 w-full m-auto min-[576px]:max-w-[33.75rem] md:max-w-[45.00rem] min-[992px]:max-w-[60.00rem] min-[1200px]:max-w-[71.25rem]">
+          <div class="h-[46.88rem] w-[75.63rem]">
+            <h3 class="text-blue-900 text-4xl font-semibold h-11 leading-[2.75rem] mb-8 w-[75.63rem]">River Cruises &amp; Combo Tickets</h3>
+            <div class="text-zinc-500 text-2xl h-9 leading-[2.13rem] mb-5 -ml-3.5 -mr-3.5 -mt-7 w-[77.50rem]">
+              <div class="h-9 max-w-[77.50rem] px-4 w-full m-auto min-[576px]:max-w-[33.75rem] md:max-w-[45.00rem] min-[992px]:max-w-[60.00rem] min-[1200px]:max-w-[71.25rem]"><p class="h-9 mb-4 w-[75.63rem]">Select the Best Cruise for you!</p></div>
+            </div>
+            <div class="h-[40.75rem] w-[84.38rem] -m-16 min-[1351px]:mt-0 min-[1351px]:-mr-16 min-[1351px]:mb-0 min-[1351px]:-ml-16">
+              <div class="items-center h-[35.38rem] justify-center w-[84.38rem] flex">
+                <div class="h-12 -mt-52 text-right w-12 hidden min-[576px]:flex">
+                  <i class="items-center text-blue-900 h-10 justify-center leading-4 min-w-[2.50rem] w-10 flex border-2 border-blue-900 border-solid rounded-full"></i>
+                </div>
+                <div class="h-[35.38rem] w-full">
+                  <div class="h-[35.38rem] w-[76.38rem]">
+                    <div style="overflow-block: hidden; overflow-inline: hidden;" class="h-[35.38rem] select-none w-[76.38rem] overflow-hidden">
+                      <div class="h-[35.38rem] max-w-full relative w-[76.38rem] overflow-hidden">
+                        <ul class="h-[35.38rem] mb-4 w-[114.63rem] list-none overflow-hidden">
+                          <li style="overflow-block: visible; overflow-inline: visible;" class="cursor-grab float-left h-[35.38rem] text-center w-80 list-item p-1.5">
+                            <div class="flex-col h-full max-w-[19.13rem] relative w-full flex border-2 border-stone-300 border-solid rounded-xl m-auto">
+                              <div class="flex-grow h-[34.63rem] min-h-[0.13rem] w-72 rounded-xl">
+                                <div class="flex-col h-full w-80 flex -m-3.5">
+                                  <div style="flex-shrink: 0;" class="px-4 relative w-full">
+                                    <div class="h-60 w-72">
+                                      <div style="background-position: 50% 50%; overflow-block: hidden; overflow-inline: hidden;" class="bg-[url(&quot;https://paristicketshop.com/storage/list/untitled-1-recovered3_576x576.webp&quot;)] bg-cover rounded-tl-xl rounded-tr-xl h-60 pt-[80%] relative w-72 overflow-hidden">
+                                        <div style="overflow-block: visible; overflow-inline: visible;" class="bottom-[11.50rem] absolute w-full z-[8] p-3">
+                                          <div class="bg-red-400 text-white h-8 leading-5 py-1 px-4 pt-1.5 relative w-28 inline-block rounded-lg m-1">Triple Combo</div>
+                                        </div>
+                                        <a href="https://paristicketshop.com/paris-river-cruises-combo-tickets/paris-1-hour-boat-tour-eiffel-tower-entry-louvre-museum-entry-combo-tickets" style="overflow-block: visible; overflow-inline: visible;" class="text-blue-900 cursor-pointer h-full absolute w-full z-[9]"> </a>
+                                        <div style="overflow-block: visible; overflow-inline: visible;" class="bg-[linear-gradient(100deg,_rgba(21,_57,_155,_0)_0px,_rgb(21,_57,_155)_45%)] text-white italic h-8 left-[11.25rem] py-1 pl-5 pr-1.5 absolute top-[12.88rem] w-28 z-[1]">284 reviews</div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div style="flex-shrink: 0;" class="px-4 relative w-full">
+                                    <a href="https://paristicketshop.com/paris-river-cruises-combo-tickets/paris-1-hour-boat-tour-eiffel-tower-entry-louvre-museum-entry-combo-tickets" class="cursor-pointer h-60 px-4 w-full">
+                                      <span class="text-lg font-semibold h-14 leading-[1.13rem] py-4 w-64">
+                                        <span class="flex-wrap h-6 w-72 flex -m-3.5">
+                                          <span style="flex-shrink: 0;" class="basis-1/2 h-6 max-w-[50%] pl-4 pr-1 relative w-full">
+                                            <span class="items-center text-base h-6 leading-4 py-1 uppercase w-14 inline-flex"> <i class="text-blue-900 h-4 mr-1.5 w-2.5"></i> <span class="h-4 w-10">Paris</span> </span>
+                                          </span>
+                                          <span style="flex-shrink: 0;" class="basis-1/2 h-6 max-w-[50%] pl-1 pr-4 relative text-right w-full">
+                                            <span class="items-center bg-yellow-50 text-base h-6 leading-4 py-1 px-3 w-28 inline-flex rounded-xl">
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <span class="h-4 pl-1 w-6 inline-block">4.4</span>
+                                            </span>
+                                          </span>
+                                        </span>
+                                      </span>
+
+                                      <span class="h-20 mb-1 min-h-[2.88rem] w-64 min-[576px]:min-h-[2.88rem]">
+                                        <h2 class="font-semibold h-20 leading-[1.38rem] mb-2 w-64">PARIS Essentials Service: Seine River Cruise, Eiffel &amp; Louvre Reservation &amp; App Bundle (Combo)</h2>
+                                      </span>
+
+                                      <span class="items-center flex-wrap h-12 w-64 flex">
+                                        <span class="h-12 opacity-60 order-1 pl-3 line-through w-16 inline-block"
+                                          ><span class="font-bold h-12 w-14 rounded-2xl"><br />€ 74,90</span></span
+                                        >
+
+                                        <span class="h-12 w-14"
+                                          ><span class="text-red-500 font-bold h-12 w-14 rounded-2xl"><span class="text-zinc-800 text-sm leading-5">from</span><br />€ 68,90</span></span
+                                        >
+                                      </span>
+
+                                      <div class="text-sm h-14 leading-4 pt-1.5 w-64">
+                                        <div class="flex-wrap h-12 w-72 flex -m-2">
+                                          <div style="flex-shrink: 0;" class="items-center basis-1/2 h-5 mb-2 max-w-[50%] px-2 relative w-full flex">
+                                            <span class="h-5 mr-1 min-w-[1.00rem] w-4">
+                                              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 442.1 521.4" xml:space="preserve" fill="rgb(51, 51, 51)" style="overflow-block: hidden; overflow-inline: hidden;" class="h-4 max-h-4 break-words align-middle w-3.5 inline overflow-hidden">
+                                                <path d="M428.5 39.9 223.7 2.7h-5.2l-205 37.2C6.1 41.4.9 47.6.8 55.2v154.6c0 67.4 20.4 132.3 59 187.6 38.6 55.3 92.6 96.9 155.9 120.1l.3.1c.9.1 1.7.2 2.6.2.8 0 1.7-.1 2.5-.2 1.5-.1 3.2-.4 5.1-.8h.2c63.2-23.2 117-64.6 155.6-119.8 38.6-55.2 59.1-119.9 59.3-187.2V55.2c0-7.5-5.4-13.9-12.8-15.3zm-18 169.8c-.3 121.3-76.4 232-189.4 275.8C108 441.7 31.9 330.9 31.7 209.7V68.1l189.4-34.5 189.4 34.5v141.6z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <path d="M157.5 230.4c-5.9-5.5-15.1-5.6-21.1 0-3 2.8-4.8 6.7-4.9 10.8-.1 4.1 1.3 8 4.2 11l55.9 55.9c2.9 2.9 6.9 4.5 10.9 4.5h.4c4 0 7.7-1.7 10.4-4.5l93.1-93.1c5.5-5.8 5.5-15.1 0-21-2.8-3-6.7-4.8-10.8-4.9-4.1-.1-8 1.3-11 4.2l-82.1 82.1-45-45z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                              </svg>
+                                            </span>
+                                            <span class="h-4 w-24">Free Cancellation</span>
+                                          </div>
+                                          <div style="flex-shrink: 0;" class="items-center basis-1/2 h-5 mb-2 max-w-[50%] px-2 relative w-full flex">
+                                            <span class="h-5 mr-1 min-w-[1.00rem] w-4">
+                                              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 351.3 522" xml:space="preserve" fill="rgb(51, 51, 51)" style="overflow-block: hidden; overflow-inline: hidden;" class="h-4 max-h-4 break-words align-middle w-3 inline overflow-hidden"><path d="M325 192H204l19.3-162.6c.1-.8.1-3 .1-3C223.3 11.6 211.8 0 197 0c-8.4 0-16.2 4-21.4 11l-.1.1L5.2 266.6C1.9 271.1 0 276.8 0 282.3c0 14.8 11.6 26.3 26.3 26.3h99.9l-19.5 184.2c-.1.8-.1 2.7-.1 2.8 0 14.8 11.6 26.3 26.3 26.3 8.4 0 16.1-4 21.3-10.9l.1-.1 191.8-277c3.3-4.5 5.2-10.2 5.2-15.7 0-14.6-11.5-26.2-26.3-26.2zm-154.2 13.8c-.5 4.4.9 8.9 3.8 12.3 3 3.3 7.2 5.3 11.7 5.3l129.2-.1L140 476.8l19.3-182.1c.5-4.4-.9-8.8-3.9-12.2-3-3.3-7.2-5.2-11.6-5.2L36 276.9 189.6 46.5l-18.8 159.3z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path></svg>
+                                            </span>
+                                            <span class="h-4 w-24">Instant Confirm</span>
+                                          </div>
+                                          <div style="flex-shrink: 0;" class="items-center basis-1/2 h-5 mb-2 max-w-[50%] px-2 relative w-full flex">
+                                            <span class="h-5 mr-1 min-w-[1.00rem] w-4">
+                                              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 310.1 525.8" xml:space="preserve" fill="rgb(51, 51, 51)" style="overflow-block: hidden; overflow-inline: hidden;" class="h-4 max-h-4 break-words align-middle w-2.5 inline overflow-hidden">
+                                                <path d="M154.1 488.9c12.4 0 22.5-10.1 22.5-22.5s-10.1-22.5-22.5-22.5-22.5 10.1-22.5 22.5 10.1 22.5 22.5 22.5zm0-30c4.1 0 7.5 3.4 7.5 7.5s-3.4 7.5-7.5 7.5-7.5-3.4-7.5-7.5 3.4-7.5 7.5-7.5z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <path d="M265.1 1.4h-220c-23.7 0-43 19.3-43 43v437c0 23.7 19.3 43 43 43h220c23.7 0 43-19.3 43-43v-437c0-23.7-19.3-43-43-43zm-237 60v-17c0-9.4 7.6-17 17-17h220c9.4 0 17 7.6 17 17v17h-254zm30 360c0-7.2-5.8-13-13-13h-17v-321h254v321h-207c-7.2 0-13 5.8-13 13s5.8 13 13 13h207v47c0 9.4-7.6 17-17 17h-220c-9.4 0-17-7.6-17-17v-47h17c7.1 0 13-5.8 13-13z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <path d="M184.1 35.4h-30c-5 0-9 4-9 9s4 9 9 9h30c5 0 9-4 9-9s-4.1-9-9-9z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <circle cx="124.1" cy="44.4" r="9" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></circle>
+                                              </svg>
+                                            </span>
+                                            <span class="h-4 w-20">Mobile Ticket</span>
+                                          </div>
+                                          <div style="flex-shrink: 0;" class="items-center basis-1/2 h-5 mb-2 max-w-[50%] px-2 relative w-full flex">
+                                            <span class="h-5 mr-1 min-w-[1.00rem] w-4">
+                                              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" xml:space="preserve" fill="rgb(51, 51, 51)" style="overflow-block: hidden; overflow-inline: hidden;" class="h-4 max-h-4 break-words align-middle w-4 inline overflow-hidden">
+                                                <path d="M256 512c141.1 0 256-114.9 256-256S397.1 0 256 0 0 114.9 0 256s114.9 256 256 256zm0-477.9c122.4 0 221.9 99.5 221.9 221.9S378.4 477.9 256 477.9 34.1 378.4 34.1 256 133.6 34.1 256 34.1z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <path d="M330.7 337.6c3.2 2.6 6.9 3.8 10.7 3.8 5 0 10-2.2 13.3-6.4 5.9-7.3 4.7-18.1-2.6-24l-78.9-63.1V119.5c0-9.4-7.7-17.1-17.1-17.1-9.4 0-17.1 7.7-17.1 17.1V256c0 5.2 2.4 10.1 6.4 13.3l85.3 68.3z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                              </svg>
+                                            </span>
+                                            <span class="h-4 w-20">Flexible Hours</span>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <form action="https://paristicketshop.com/cart/add" class="w-64">
+                                        <span class="flex-wrap w-72 flex -m-3.5"> </span>
+                                      </form>
+                                    </a>
+                                  </div>
+
+                                  <div class="mt-auto pb-4 px-8 pt-3 w-80">
+                                    <a href="https://paristicketshop.com/paris-river-cruises-combo-tickets/paris-1-hour-boat-tour-eiffel-tower-entry-louvre-museum-entry-combo-tickets?check-availability" style="appearance: button;" class="bg-teal-700 text-white cursor-pointer h-10 py-1.5 px-3 w-full border-2 border-teal-700 border-solid rounded-lg" id="a-1">Check availability</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                          <li style="overflow-block: visible; overflow-inline: visible;" class="cursor-grab float-left h-[35.38rem] text-center w-80 list-item p-1.5">
+                            <div class="flex-col h-full max-w-[19.13rem] relative w-full flex border-2 border-stone-300 border-solid rounded-xl m-auto">
+                              <div class="flex-grow h-[34.63rem] min-h-[0.13rem] w-72 rounded-xl">
+                                <div class="flex-col h-full w-80 flex -m-3.5">
+                                  <div style="flex-shrink: 0;" class="px-4 relative w-full">
+                                    <div class="h-60 w-72">
+                                      <div style="background-position: 50% 50%; overflow-block: hidden; overflow-inline: hidden;" class="bg-[url(&quot;https://paristicketshop.com/storage/list/paris-seine-river-cruise_576x576.webp&quot;)] bg-cover rounded-tl-xl rounded-tr-xl h-60 pt-[80%] relative w-72 overflow-hidden">
+                                        <div style="overflow-block: visible; overflow-inline: visible;" class="bottom-[11.50rem] absolute w-full z-[8] p-3">
+                                          <div class="bg-blue-500 text-white h-8 leading-5 py-1 px-4 pt-1.5 relative w-44 inline-block rounded-lg m-1">Highly Recommended</div>
+                                        </div>
+                                        <a href="https://paristicketshop.com/paris-river-cruises-combo-tickets/paris-seine-river-cruise-1-hour-long-tour" style="overflow-block: visible; overflow-inline: visible;" class="text-blue-900 cursor-pointer h-full absolute w-full z-[9]"> </a>
+                                        <div style="overflow-block: visible; overflow-inline: visible;" class="bg-[linear-gradient(100deg,_rgba(21,_57,_155,_0)_0px,_rgb(21,_57,_155)_45%)] text-white italic h-8 left-[11.25rem] py-1 pl-5 pr-1.5 absolute top-[12.88rem] w-28 z-[1]">392 reviews</div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div style="flex-shrink: 0;" class="px-4 relative w-full">
+                                    <a href="https://paristicketshop.com/paris-river-cruises-combo-tickets/paris-seine-river-cruise-1-hour-long-tour" class="cursor-pointer h-40 px-4 w-full">
+                                      <span class="text-lg font-semibold h-14 leading-[1.13rem] py-4 w-64">
+                                        <span class="flex-wrap h-6 w-72 flex -m-3.5">
+                                          <span style="flex-shrink: 0;" class="basis-1/2 h-6 max-w-[50%] pl-4 pr-1 relative w-full">
+                                            <span class="items-center text-base h-6 leading-4 py-1 uppercase w-14 inline-flex"> <i class="text-blue-900 h-4 mr-1.5 w-2.5"></i> <span class="h-4 w-10">Paris</span> </span>
+                                          </span>
+                                          <span style="flex-shrink: 0;" class="basis-1/2 h-6 max-w-[50%] pl-1 pr-4 relative text-right w-full">
+                                            <span class="items-center bg-yellow-50 text-base h-6 leading-4 py-1 px-3 w-28 inline-flex rounded-xl">
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <span class="h-4 pl-1 w-6 inline-block">4.5</span>
+                                            </span>
+                                          </span>
+                                        </span>
+                                      </span>
+
+                                      <span class="h-12 mb-1 min-h-[2.88rem] w-64 min-[576px]:min-h-[2.88rem]">
+                                        <h2 class="font-semibold h-11 leading-[1.38rem] mb-2 w-64">Paris: Seine River Cruise - 1-Hour long tour &amp; Digital Audio</h2>
+                                      </span>
+
+                                      <span class="items-center flex-wrap w-64 flex"> </span>
+
+                                      <div class="text-sm h-14 leading-4 pt-1.5 w-64">
+                                        <div class="flex-wrap h-12 w-72 flex -m-2">
+                                          <div style="flex-shrink: 0;" class="items-center basis-1/2 h-5 mb-2 max-w-[50%] px-2 relative w-full flex">
+                                            <span class="h-5 mr-1 min-w-[1.00rem] w-4">
+                                              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 442.1 521.4" xml:space="preserve" fill="rgb(51, 51, 51)" style="overflow-block: hidden; overflow-inline: hidden;" class="h-4 max-h-4 break-words align-middle w-3.5 inline overflow-hidden">
+                                                <path d="M428.5 39.9 223.7 2.7h-5.2l-205 37.2C6.1 41.4.9 47.6.8 55.2v154.6c0 67.4 20.4 132.3 59 187.6 38.6 55.3 92.6 96.9 155.9 120.1l.3.1c.9.1 1.7.2 2.6.2.8 0 1.7-.1 2.5-.2 1.5-.1 3.2-.4 5.1-.8h.2c63.2-23.2 117-64.6 155.6-119.8 38.6-55.2 59.1-119.9 59.3-187.2V55.2c0-7.5-5.4-13.9-12.8-15.3zm-18 169.8c-.3 121.3-76.4 232-189.4 275.8C108 441.7 31.9 330.9 31.7 209.7V68.1l189.4-34.5 189.4 34.5v141.6z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <path d="M157.5 230.4c-5.9-5.5-15.1-5.6-21.1 0-3 2.8-4.8 6.7-4.9 10.8-.1 4.1 1.3 8 4.2 11l55.9 55.9c2.9 2.9 6.9 4.5 10.9 4.5h.4c4 0 7.7-1.7 10.4-4.5l93.1-93.1c5.5-5.8 5.5-15.1 0-21-2.8-3-6.7-4.8-10.8-4.9-4.1-.1-8 1.3-11 4.2l-82.1 82.1-45-45z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                              </svg>
+                                            </span>
+                                            <span class="h-4 w-24">Free Cancellation</span>
+                                          </div>
+                                          <div style="flex-shrink: 0;" class="items-center basis-1/2 h-5 mb-2 max-w-[50%] px-2 relative w-full flex">
+                                            <span class="h-5 mr-1 min-w-[1.00rem] w-4">
+                                              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 351.3 522" xml:space="preserve" fill="rgb(51, 51, 51)" style="overflow-block: hidden; overflow-inline: hidden;" class="h-4 max-h-4 break-words align-middle w-3 inline overflow-hidden"><path d="M325 192H204l19.3-162.6c.1-.8.1-3 .1-3C223.3 11.6 211.8 0 197 0c-8.4 0-16.2 4-21.4 11l-.1.1L5.2 266.6C1.9 271.1 0 276.8 0 282.3c0 14.8 11.6 26.3 26.3 26.3h99.9l-19.5 184.2c-.1.8-.1 2.7-.1 2.8 0 14.8 11.6 26.3 26.3 26.3 8.4 0 16.1-4 21.3-10.9l.1-.1 191.8-277c3.3-4.5 5.2-10.2 5.2-15.7 0-14.6-11.5-26.2-26.3-26.2zm-154.2 13.8c-.5 4.4.9 8.9 3.8 12.3 3 3.3 7.2 5.3 11.7 5.3l129.2-.1L140 476.8l19.3-182.1c.5-4.4-.9-8.8-3.9-12.2-3-3.3-7.2-5.2-11.6-5.2L36 276.9 189.6 46.5l-18.8 159.3z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path></svg>
+                                            </span>
+                                            <span class="h-4 w-24">Instant Confirm</span>
+                                          </div>
+                                          <div style="flex-shrink: 0;" class="items-center basis-1/2 h-5 mb-2 max-w-[50%] px-2 relative w-full flex">
+                                            <span class="h-5 mr-1 min-w-[1.00rem] w-4">
+                                              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 310.1 525.8" xml:space="preserve" fill="rgb(51, 51, 51)" style="overflow-block: hidden; overflow-inline: hidden;" class="h-4 max-h-4 break-words align-middle w-2.5 inline overflow-hidden">
+                                                <path d="M154.1 488.9c12.4 0 22.5-10.1 22.5-22.5s-10.1-22.5-22.5-22.5-22.5 10.1-22.5 22.5 10.1 22.5 22.5 22.5zm0-30c4.1 0 7.5 3.4 7.5 7.5s-3.4 7.5-7.5 7.5-7.5-3.4-7.5-7.5 3.4-7.5 7.5-7.5z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <path d="M265.1 1.4h-220c-23.7 0-43 19.3-43 43v437c0 23.7 19.3 43 43 43h220c23.7 0 43-19.3 43-43v-437c0-23.7-19.3-43-43-43zm-237 60v-17c0-9.4 7.6-17 17-17h220c9.4 0 17 7.6 17 17v17h-254zm30 360c0-7.2-5.8-13-13-13h-17v-321h254v321h-207c-7.2 0-13 5.8-13 13s5.8 13 13 13h207v47c0 9.4-7.6 17-17 17h-220c-9.4 0-17-7.6-17-17v-47h17c7.1 0 13-5.8 13-13z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <path d="M184.1 35.4h-30c-5 0-9 4-9 9s4 9 9 9h30c5 0 9-4 9-9s-4.1-9-9-9z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <circle cx="124.1" cy="44.4" r="9" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></circle>
+                                              </svg>
+                                            </span>
+                                            <span class="h-4 w-20">Mobile Ticket</span>
+                                          </div>
+                                          <div style="flex-shrink: 0;" class="items-center basis-1/2 h-5 mb-2 max-w-[50%] px-2 relative w-full flex">
+                                            <span class="h-5 mr-1 min-w-[1.00rem] w-4">
+                                              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" xml:space="preserve" fill="rgb(51, 51, 51)" style="overflow-block: hidden; overflow-inline: hidden;" class="h-4 max-h-4 break-words align-middle w-4 inline overflow-hidden">
+                                                <path d="M256 512c141.1 0 256-114.9 256-256S397.1 0 256 0 0 114.9 0 256s114.9 256 256 256zm0-477.9c122.4 0 221.9 99.5 221.9 221.9S378.4 477.9 256 477.9 34.1 378.4 34.1 256 133.6 34.1 256 34.1z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <path d="M330.7 337.6c3.2 2.6 6.9 3.8 10.7 3.8 5 0 10-2.2 13.3-6.4 5.9-7.3 4.7-18.1-2.6-24l-78.9-63.1V119.5c0-9.4-7.7-17.1-17.1-17.1-9.4 0-17.1 7.7-17.1 17.1V256c0 5.2 2.4 10.1 6.4 13.3l85.3 68.3z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                              </svg>
+                                            </span>
+                                            <span class="h-4 w-20">Flexible Hours</span>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <form action="https://paristicketshop.com/cart/add" class="w-64">
+                                        <span class="flex-wrap w-72 flex -m-3.5"> </span>
+                                      </form>
+                                    </a>
+                                  </div>
+
+                                  <div class="mt-auto pb-4 px-8 pt-3 w-80">
+                                    <a href="https://paristicketshop.com/paris-river-cruises-combo-tickets/paris-seine-river-cruise-1-hour-long-tour?check-availability" style="appearance: button;" class="bg-teal-700 text-white cursor-pointer h-10 py-1.5 px-3 w-full border-2 border-teal-700 border-solid rounded-lg" id="a-2">Check availability</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                          <li style="overflow-block: visible; overflow-inline: visible;" class="cursor-grab float-left h-[35.38rem] text-center w-80 list-item p-1.5">
+                            <div class="flex-col h-full max-w-[19.13rem] relative w-full flex border-2 border-stone-300 border-solid rounded-xl m-auto">
+                              <div class="flex-grow h-[34.63rem] min-h-[0.13rem] w-72 rounded-xl">
+                                <div class="flex-col h-full w-80 flex -m-3.5">
+                                  <div style="flex-shrink: 0;" class="px-4 relative w-full">
+                                    <div class="h-60 w-72">
+                                      <div style="background-position: 50% 50%; overflow-block: hidden; overflow-inline: hidden;" class="bg-[url(&quot;https://paristicketshop.com/storage/list/eiffelandseineboat-991x991_576x576.webp&quot;)] bg-cover rounded-tl-xl rounded-tr-xl h-60 pt-[80%] relative w-72 overflow-hidden">
+                                        <a href="https://paristicketshop.com/paris-river-cruises-combo-tickets/torre-eiffel-cruise-combooo" style="overflow-block: visible; overflow-inline: visible;" class="text-blue-900 cursor-pointer h-full absolute w-full z-[9]"> </a>
+                                        <div style="overflow-block: visible; overflow-inline: visible;" class="bg-[linear-gradient(100deg,_rgba(21,_57,_155,_0)_0px,_rgb(21,_57,_155)_45%)] text-white italic h-8 left-[11.88rem] py-1 pl-5 pr-1.5 absolute top-[12.88rem] w-28 z-[1]">97 reviews</div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div style="flex-shrink: 0;" class="px-4 relative w-full">
+                                    <a href="https://paristicketshop.com/paris-river-cruises-combo-tickets/torre-eiffel-cruise-combooo" class="cursor-pointer h-52 px-4 w-full">
+                                      <span class="text-lg font-semibold h-14 leading-[1.13rem] py-4 w-64">
+                                        <span class="flex-wrap h-6 w-72 flex -m-3.5">
+                                          <span style="flex-shrink: 0;" class="basis-1/2 h-6 max-w-[50%] pl-4 pr-1 relative w-full">
+                                            <span class="items-center text-base h-6 leading-4 py-1 uppercase w-14 inline-flex"> <i class="text-blue-900 h-4 mr-1.5 w-2.5"></i> <span class="h-4 w-10">Paris</span> </span>
+                                          </span>
+                                          <span style="flex-shrink: 0;" class="basis-1/2 h-6 max-w-[50%] pl-1 pr-4 relative text-right w-full">
+                                            <span class="items-center bg-yellow-50 text-base h-6 leading-4 py-1 px-3 w-28 inline-flex rounded-xl">
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <span class="h-4 pl-1 w-6 inline-block">4.4</span>
+                                            </span>
+                                          </span>
+                                        </span>
+                                      </span>
+
+                                      <span class="h-12 mb-1 min-h-[2.88rem] w-64 min-[576px]:min-h-[2.88rem]">
+                                        <h2 class="font-semibold h-11 leading-[1.38rem] mb-2 w-64">Paris: Seine River Cruise &amp; Eiffel Tower + Digital Info Pack (Combo)</h2>
+                                      </span>
+
+                                      <span class="items-center flex-wrap h-12 w-64 flex">
+                                        <span class="h-12 opacity-60 order-1 pl-3 line-through w-16 inline-block"
+                                          ><span class="font-bold h-12 w-14 rounded-2xl"><br />€ 44,90</span></span
+                                        >
+
+                                        <span class="h-12 w-14"
+                                          ><span class="text-red-500 font-bold h-12 w-14 rounded-2xl"><span class="text-zinc-800 text-sm leading-5">from</span><br />€ 42,90</span></span
+                                        >
+                                      </span>
+
+                                      <div class="text-sm h-14 leading-4 pt-1.5 w-64">
+                                        <div class="flex-wrap h-12 w-72 flex -m-2">
+                                          <div style="flex-shrink: 0;" class="items-center basis-1/2 h-5 mb-2 max-w-[50%] px-2 relative w-full flex">
+                                            <span class="h-5 mr-1 min-w-[1.00rem] w-4">
+                                              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 442.1 521.4" xml:space="preserve" fill="rgb(51, 51, 51)" style="overflow-block: hidden; overflow-inline: hidden;" class="h-4 max-h-4 break-words align-middle w-3.5 inline overflow-hidden">
+                                                <path d="M428.5 39.9 223.7 2.7h-5.2l-205 37.2C6.1 41.4.9 47.6.8 55.2v154.6c0 67.4 20.4 132.3 59 187.6 38.6 55.3 92.6 96.9 155.9 120.1l.3.1c.9.1 1.7.2 2.6.2.8 0 1.7-.1 2.5-.2 1.5-.1 3.2-.4 5.1-.8h.2c63.2-23.2 117-64.6 155.6-119.8 38.6-55.2 59.1-119.9 59.3-187.2V55.2c0-7.5-5.4-13.9-12.8-15.3zm-18 169.8c-.3 121.3-76.4 232-189.4 275.8C108 441.7 31.9 330.9 31.7 209.7V68.1l189.4-34.5 189.4 34.5v141.6z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <path d="M157.5 230.4c-5.9-5.5-15.1-5.6-21.1 0-3 2.8-4.8 6.7-4.9 10.8-.1 4.1 1.3 8 4.2 11l55.9 55.9c2.9 2.9 6.9 4.5 10.9 4.5h.4c4 0 7.7-1.7 10.4-4.5l93.1-93.1c5.5-5.8 5.5-15.1 0-21-2.8-3-6.7-4.8-10.8-4.9-4.1-.1-8 1.3-11 4.2l-82.1 82.1-45-45z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                              </svg>
+                                            </span>
+                                            <span class="h-4 w-24">Free Cancellation</span>
+                                          </div>
+                                          <div style="flex-shrink: 0;" class="items-center basis-1/2 h-5 mb-2 max-w-[50%] px-2 relative w-full flex">
+                                            <span class="h-5 mr-1 min-w-[1.00rem] w-4">
+                                              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 351.3 522" xml:space="preserve" fill="rgb(51, 51, 51)" style="overflow-block: hidden; overflow-inline: hidden;" class="h-4 max-h-4 break-words align-middle w-3 inline overflow-hidden"><path d="M325 192H204l19.3-162.6c.1-.8.1-3 .1-3C223.3 11.6 211.8 0 197 0c-8.4 0-16.2 4-21.4 11l-.1.1L5.2 266.6C1.9 271.1 0 276.8 0 282.3c0 14.8 11.6 26.3 26.3 26.3h99.9l-19.5 184.2c-.1.8-.1 2.7-.1 2.8 0 14.8 11.6 26.3 26.3 26.3 8.4 0 16.1-4 21.3-10.9l.1-.1 191.8-277c3.3-4.5 5.2-10.2 5.2-15.7 0-14.6-11.5-26.2-26.3-26.2zm-154.2 13.8c-.5 4.4.9 8.9 3.8 12.3 3 3.3 7.2 5.3 11.7 5.3l129.2-.1L140 476.8l19.3-182.1c.5-4.4-.9-8.8-3.9-12.2-3-3.3-7.2-5.2-11.6-5.2L36 276.9 189.6 46.5l-18.8 159.3z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path></svg>
+                                            </span>
+                                            <span class="h-4 w-24">Instant Confirm</span>
+                                          </div>
+                                          <div style="flex-shrink: 0;" class="items-center basis-1/2 h-5 mb-2 max-w-[50%] px-2 relative w-full flex">
+                                            <span class="h-5 mr-1 min-w-[1.00rem] w-4">
+                                              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 310.1 525.8" xml:space="preserve" fill="rgb(51, 51, 51)" style="overflow-block: hidden; overflow-inline: hidden;" class="h-4 max-h-4 break-words align-middle w-2.5 inline overflow-hidden">
+                                                <path d="M154.1 488.9c12.4 0 22.5-10.1 22.5-22.5s-10.1-22.5-22.5-22.5-22.5 10.1-22.5 22.5 10.1 22.5 22.5 22.5zm0-30c4.1 0 7.5 3.4 7.5 7.5s-3.4 7.5-7.5 7.5-7.5-3.4-7.5-7.5 3.4-7.5 7.5-7.5z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <path d="M265.1 1.4h-220c-23.7 0-43 19.3-43 43v437c0 23.7 19.3 43 43 43h220c23.7 0 43-19.3 43-43v-437c0-23.7-19.3-43-43-43zm-237 60v-17c0-9.4 7.6-17 17-17h220c9.4 0 17 7.6 17 17v17h-254zm30 360c0-7.2-5.8-13-13-13h-17v-321h254v321h-207c-7.2 0-13 5.8-13 13s5.8 13 13 13h207v47c0 9.4-7.6 17-17 17h-220c-9.4 0-17-7.6-17-17v-47h17c7.1 0 13-5.8 13-13z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <path d="M184.1 35.4h-30c-5 0-9 4-9 9s4 9 9 9h30c5 0 9-4 9-9s-4.1-9-9-9z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <circle cx="124.1" cy="44.4" r="9" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></circle>
+                                              </svg>
+                                            </span>
+                                            <span class="h-4 w-20">Mobile Ticket</span>
+                                          </div>
+                                          <div style="flex-shrink: 0;" class="items-center basis-1/2 h-5 mb-2 max-w-[50%] px-2 relative w-full flex">
+                                            <span class="h-5 mr-1 min-w-[1.00rem] w-4">
+                                              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" xml:space="preserve" fill="rgb(51, 51, 51)" style="overflow-block: hidden; overflow-inline: hidden;" class="h-4 max-h-4 break-words align-middle w-4 inline overflow-hidden">
+                                                <path d="M256 512c141.1 0 256-114.9 256-256S397.1 0 256 0 0 114.9 0 256s114.9 256 256 256zm0-477.9c122.4 0 221.9 99.5 221.9 221.9S378.4 477.9 256 477.9 34.1 378.4 34.1 256 133.6 34.1 256 34.1z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <path d="M330.7 337.6c3.2 2.6 6.9 3.8 10.7 3.8 5 0 10-2.2 13.3-6.4 5.9-7.3 4.7-18.1-2.6-24l-78.9-63.1V119.5c0-9.4-7.7-17.1-17.1-17.1-9.4 0-17.1 7.7-17.1 17.1V256c0 5.2 2.4 10.1 6.4 13.3l85.3 68.3z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                              </svg>
+                                            </span>
+                                            <span class="h-4 w-20">Flexible Hours</span>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <form action="https://paristicketshop.com/cart/add" class="w-64">
+                                        <span class="flex-wrap w-72 flex -m-3.5"> </span>
+                                      </form>
+                                    </a>
+                                  </div>
+
+                                  <div class="mt-auto pb-4 px-8 pt-3 w-80">
+                                    <a href="https://paristicketshop.com/paris-river-cruises-combo-tickets/torre-eiffel-cruise-combooo?check-availability" style="appearance: button;" class="bg-teal-700 text-white cursor-pointer h-10 py-1.5 px-3 w-full border-2 border-teal-700 border-solid rounded-lg" id="a-3">Check availability</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                          <li style="overflow-block: visible; overflow-inline: visible;" class="cursor-grab float-left h-[35.38rem] text-center w-80 list-item p-1.5">
+                            <div class="flex-col h-full max-w-[19.13rem] relative w-full flex border-2 border-stone-300 border-solid rounded-xl m-auto">
+                              <div class="flex-grow h-[34.63rem] min-h-[0.13rem] w-72 rounded-xl">
+                                <div class="flex-col h-full w-80 flex -m-3.5">
+                                  <div style="flex-shrink: 0;" class="px-4 relative w-full">
+                                    <div class="h-60 w-72">
+                                      <div style="background-position: 50% 50%; overflow-block: hidden; overflow-inline: hidden;" class="bg-[url(&quot;https://paristicketshop.com/storage/list/boattourandlouvre-991x991_576x576.webp&quot;)] bg-cover rounded-tl-xl rounded-tr-xl h-60 pt-[80%] relative w-72 overflow-hidden">
+                                        <a href="https://paristicketshop.com/paris-river-cruises-combo-tickets/paris-1-hour-boat-tour-louvre-museum-entry-combo-tickets" style="overflow-block: visible; overflow-inline: visible;" class="text-blue-900 cursor-pointer h-full absolute w-full z-[9]"> </a>
+                                        <div style="overflow-block: visible; overflow-inline: visible;" class="bg-[linear-gradient(100deg,_rgba(21,_57,_155,_0)_0px,_rgb(21,_57,_155)_45%)] text-white italic h-8 left-[11.25rem] py-1 pl-5 pr-1.5 absolute top-[12.88rem] w-28 z-[1]">195 reviews</div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div style="flex-shrink: 0;" class="px-4 relative w-full">
+                                    <a href="https://paristicketshop.com/paris-river-cruises-combo-tickets/paris-1-hour-boat-tour-louvre-museum-entry-combo-tickets" class="cursor-pointer h-56 px-4 w-full">
+                                      <span class="text-lg font-semibold h-14 leading-[1.13rem] py-4 w-64">
+                                        <span class="flex-wrap h-6 w-72 flex -m-3.5">
+                                          <span style="flex-shrink: 0;" class="basis-1/2 h-6 max-w-[50%] pl-4 pr-1 relative w-full">
+                                            <span class="items-center text-base h-6 leading-4 py-1 uppercase w-14 inline-flex"> <i class="text-blue-900 h-4 mr-1.5 w-2.5"></i> <span class="h-4 w-10">Paris</span> </span>
+                                          </span>
+                                          <span style="flex-shrink: 0;" class="basis-1/2 h-6 max-w-[50%] pl-1 pr-4 relative text-right w-full">
+                                            <span class="items-center bg-yellow-50 text-base h-6 leading-4 py-1 px-3 w-28 inline-flex rounded-xl">
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <span class="h-4 pl-1 w-6 inline-block">4.5</span>
+                                            </span>
+                                          </span>
+                                        </span>
+                                      </span>
+
+                                      <span class="h-16 mb-1 min-h-[2.88rem] w-64 min-[576px]:min-h-[2.88rem]">
+                                        <h2 class="font-semibold h-16 leading-[1.38rem] mb-2 w-64">PARIS: Louvre Museum &amp; Seine River Cruise: Art Discovery App &amp; Boat Audio (Combo)</h2>
+                                      </span>
+
+                                      <span class="items-center flex-wrap h-12 w-64 flex">
+                                        <span class="h-12 opacity-60 order-1 pl-3 line-through w-16 inline-block"
+                                          ><span class="font-bold h-12 w-14 rounded-2xl"><br />€ 55,90</span></span
+                                        >
+
+                                        <span class="h-12 w-14"
+                                          ><span class="text-red-500 font-bold h-12 w-14 rounded-2xl"><span class="text-zinc-800 text-sm leading-5">from</span><br />€ 44,90</span></span
+                                        >
+                                      </span>
+
+                                      <div class="text-sm h-14 leading-4 pt-1.5 w-64">
+                                        <div class="flex-wrap h-12 w-72 flex -m-2">
+                                          <div style="flex-shrink: 0;" class="items-center basis-1/2 h-5 mb-2 max-w-[50%] px-2 relative w-full flex">
+                                            <span class="h-5 mr-1 min-w-[1.00rem] w-4">
+                                              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 442.1 521.4" xml:space="preserve" fill="rgb(51, 51, 51)" style="overflow-block: hidden; overflow-inline: hidden;" class="h-4 max-h-4 break-words align-middle w-3.5 inline overflow-hidden">
+                                                <path d="M428.5 39.9 223.7 2.7h-5.2l-205 37.2C6.1 41.4.9 47.6.8 55.2v154.6c0 67.4 20.4 132.3 59 187.6 38.6 55.3 92.6 96.9 155.9 120.1l.3.1c.9.1 1.7.2 2.6.2.8 0 1.7-.1 2.5-.2 1.5-.1 3.2-.4 5.1-.8h.2c63.2-23.2 117-64.6 155.6-119.8 38.6-55.2 59.1-119.9 59.3-187.2V55.2c0-7.5-5.4-13.9-12.8-15.3zm-18 169.8c-.3 121.3-76.4 232-189.4 275.8C108 441.7 31.9 330.9 31.7 209.7V68.1l189.4-34.5 189.4 34.5v141.6z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <path d="M157.5 230.4c-5.9-5.5-15.1-5.6-21.1 0-3 2.8-4.8 6.7-4.9 10.8-.1 4.1 1.3 8 4.2 11l55.9 55.9c2.9 2.9 6.9 4.5 10.9 4.5h.4c4 0 7.7-1.7 10.4-4.5l93.1-93.1c5.5-5.8 5.5-15.1 0-21-2.8-3-6.7-4.8-10.8-4.9-4.1-.1-8 1.3-11 4.2l-82.1 82.1-45-45z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                              </svg>
+                                            </span>
+                                            <span class="h-4 w-24">Free Cancellation</span>
+                                          </div>
+                                          <div style="flex-shrink: 0;" class="items-center basis-1/2 h-5 mb-2 max-w-[50%] px-2 relative w-full flex">
+                                            <span class="h-5 mr-1 min-w-[1.00rem] w-4">
+                                              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 351.3 522" xml:space="preserve" fill="rgb(51, 51, 51)" style="overflow-block: hidden; overflow-inline: hidden;" class="h-4 max-h-4 break-words align-middle w-3 inline overflow-hidden"><path d="M325 192H204l19.3-162.6c.1-.8.1-3 .1-3C223.3 11.6 211.8 0 197 0c-8.4 0-16.2 4-21.4 11l-.1.1L5.2 266.6C1.9 271.1 0 276.8 0 282.3c0 14.8 11.6 26.3 26.3 26.3h99.9l-19.5 184.2c-.1.8-.1 2.7-.1 2.8 0 14.8 11.6 26.3 26.3 26.3 8.4 0 16.1-4 21.3-10.9l.1-.1 191.8-277c3.3-4.5 5.2-10.2 5.2-15.7 0-14.6-11.5-26.2-26.3-26.2zm-154.2 13.8c-.5 4.4.9 8.9 3.8 12.3 3 3.3 7.2 5.3 11.7 5.3l129.2-.1L140 476.8l19.3-182.1c.5-4.4-.9-8.8-3.9-12.2-3-3.3-7.2-5.2-11.6-5.2L36 276.9 189.6 46.5l-18.8 159.3z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path></svg>
+                                            </span>
+                                            <span class="h-4 w-24">Instant Confirm</span>
+                                          </div>
+                                          <div style="flex-shrink: 0;" class="items-center basis-1/2 h-5 mb-2 max-w-[50%] px-2 relative w-full flex">
+                                            <span class="h-5 mr-1 min-w-[1.00rem] w-4">
+                                              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 310.1 525.8" xml:space="preserve" fill="rgb(51, 51, 51)" style="overflow-block: hidden; overflow-inline: hidden;" class="h-4 max-h-4 break-words align-middle w-2.5 inline overflow-hidden">
+                                                <path d="M154.1 488.9c12.4 0 22.5-10.1 22.5-22.5s-10.1-22.5-22.5-22.5-22.5 10.1-22.5 22.5 10.1 22.5 22.5 22.5zm0-30c4.1 0 7.5 3.4 7.5 7.5s-3.4 7.5-7.5 7.5-7.5-3.4-7.5-7.5 3.4-7.5 7.5-7.5z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <path d="M265.1 1.4h-220c-23.7 0-43 19.3-43 43v437c0 23.7 19.3 43 43 43h220c23.7 0 43-19.3 43-43v-437c0-23.7-19.3-43-43-43zm-237 60v-17c0-9.4 7.6-17 17-17h220c9.4 0 17 7.6 17 17v17h-254zm30 360c0-7.2-5.8-13-13-13h-17v-321h254v321h-207c-7.2 0-13 5.8-13 13s5.8 13 13 13h207v47c0 9.4-7.6 17-17 17h-220c-9.4 0-17-7.6-17-17v-47h17c7.1 0 13-5.8 13-13z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <path d="M184.1 35.4h-30c-5 0-9 4-9 9s4 9 9 9h30c5 0 9-4 9-9s-4.1-9-9-9z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <circle cx="124.1" cy="44.4" r="9" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></circle>
+                                              </svg>
+                                            </span>
+                                            <span class="h-4 w-20">Mobile Ticket</span>
+                                          </div>
+                                          <div style="flex-shrink: 0;" class="items-center basis-1/2 h-5 mb-2 max-w-[50%] px-2 relative w-full flex">
+                                            <span class="h-5 mr-1 min-w-[1.00rem] w-4">
+                                              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" xml:space="preserve" fill="rgb(51, 51, 51)" style="overflow-block: hidden; overflow-inline: hidden;" class="h-4 max-h-4 break-words align-middle w-4 inline overflow-hidden">
+                                                <path d="M256 512c141.1 0 256-114.9 256-256S397.1 0 256 0 0 114.9 0 256s114.9 256 256 256zm0-477.9c122.4 0 221.9 99.5 221.9 221.9S378.4 477.9 256 477.9 34.1 378.4 34.1 256 133.6 34.1 256 34.1z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <path d="M330.7 337.6c3.2 2.6 6.9 3.8 10.7 3.8 5 0 10-2.2 13.3-6.4 5.9-7.3 4.7-18.1-2.6-24l-78.9-63.1V119.5c0-9.4-7.7-17.1-17.1-17.1-9.4 0-17.1 7.7-17.1 17.1V256c0 5.2 2.4 10.1 6.4 13.3l85.3 68.3z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                              </svg>
+                                            </span>
+                                            <span class="h-4 w-20">Flexible Hours</span>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <form action="https://paristicketshop.com/cart/add" class="w-64">
+                                        <span class="flex-wrap w-72 flex -m-3.5"> </span>
+                                      </form>
+                                    </a>
+                                  </div>
+
+                                  <div class="mt-auto pb-4 px-8 pt-3 w-80">
+                                    <a href="https://paristicketshop.com/paris-river-cruises-combo-tickets/paris-1-hour-boat-tour-louvre-museum-entry-combo-tickets?check-availability" style="appearance: button;" class="bg-teal-700 text-white cursor-pointer h-10 py-1.5 px-3 w-full border-2 border-teal-700 border-solid rounded-lg" id="a-4">Check availability</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                          <li style="overflow-block: visible; overflow-inline: visible;" class="cursor-grab float-left h-[35.38rem] text-center w-80 list-item p-1.5">
+                            <div class="flex-col h-full max-w-[19.13rem] relative w-full flex border-2 border-stone-300 border-solid rounded-xl m-auto">
+                              <div class="flex-grow h-[34.63rem] min-h-[0.13rem] w-72 rounded-xl">
+                                <div class="flex-col h-full w-80 flex -m-3.5">
+                                  <div style="flex-shrink: 0;" class="px-4 relative w-full">
+                                    <div class="h-60 w-72">
+                                      <div style="background-position: 50% 50%; overflow-block: hidden; overflow-inline: hidden;" class="bg-[url(&quot;https://paristicketshop.com/storage/list/ec5i3hc_576x576.webp&quot;)] bg-cover rounded-tl-xl rounded-tr-xl h-60 pt-[80%] relative w-72 overflow-hidden">
+                                        <div style="overflow-block: visible; overflow-inline: visible;" class="bottom-[11.50rem] absolute w-full z-[8] p-3">
+                                          <div class="bg-blue-500 text-white h-8 leading-5 py-1 px-4 pt-1.5 relative w-44 inline-block rounded-lg m-1">Highly Recommended</div>
+                                        </div>
+                                        <a href="https://paristicketshop.com/paris-river-cruises-combo-tickets/versailles-palace-entry-ticket-for-the-palace-eiffel-tower-entry-ticketseine-boat-tour-combo" style="overflow-block: visible; overflow-inline: visible;" class="text-blue-900 cursor-pointer h-full absolute w-full z-[9]"> </a>
+                                        <div style="overflow-block: visible; overflow-inline: visible;" class="bg-[linear-gradient(100deg,_rgba(21,_57,_155,_0)_0px,_rgb(21,_57,_155)_45%)] text-white italic h-8 left-[11.88rem] py-1 pl-5 pr-1.5 absolute top-[12.88rem] w-28 z-[1]">27 reviews</div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div style="flex-shrink: 0;" class="px-4 relative w-full">
+                                    <a href="https://paristicketshop.com/paris-river-cruises-combo-tickets/versailles-palace-entry-ticket-for-the-palace-eiffel-tower-entry-ticketseine-boat-tour-combo" class="cursor-pointer h-56 px-4 w-full">
+                                      <span class="text-lg font-semibold h-14 leading-[1.13rem] py-4 w-64">
+                                        <span class="flex-wrap h-6 w-72 flex -m-3.5">
+                                          <span style="flex-shrink: 0;" class="basis-1/2 h-6 max-w-[50%] pl-4 pr-1 relative w-full">
+                                            <span class="items-center text-base h-6 leading-4 py-1 uppercase w-24 inline-flex"> <i class="text-blue-900 h-4 mr-1.5 w-2.5"></i> <span class="h-4 w-20">Versailles</span> </span>
+                                          </span>
+                                          <span style="flex-shrink: 0;" class="basis-1/2 h-6 max-w-[50%] pl-1 pr-4 relative text-right w-full">
+                                            <span class="items-center bg-yellow-50 text-base h-6 leading-4 py-1 px-3 w-28 inline-flex rounded-xl">
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <i class="text-yellow-400 h-4 w-4"></i>
+                                              <span class="h-4 pl-1 w-6 inline-block">4.6</span>
+                                            </span>
+                                          </span>
+                                        </span>
+                                      </span>
+
+                                      <span class="h-16 mb-1 min-h-[2.88rem] w-64 min-[576px]:min-h-[2.88rem]">
+                                        <h2 class="font-semibold h-16 leading-[1.38rem] mb-2 w-64">Versailles Palace, Eiffel Tower &amp; Seine Cruise: Ultimate Planning Service &amp; Maps (combo)</h2>
+                                      </span>
+
+                                      <span class="items-center flex-wrap h-12 w-64 flex">
+                                        <span class="h-12 w-14 inline-block"
+                                          ><span class="font-bold h-12 w-14 rounded-2xl"><span class="text-sm leading-5">from</span><br />€ 63,90</span></span
+                                        >
+
+                                        <span class="h-6 order-1 w-1.5">&nbsp;</span>
+                                      </span>
+
+                                      <div class="text-sm h-14 leading-4 pt-1.5 w-64">
+                                        <div class="flex-wrap h-12 w-72 flex -m-2">
+                                          <div style="flex-shrink: 0;" class="items-center basis-1/2 h-5 mb-2 max-w-[50%] px-2 relative w-full flex">
+                                            <span class="h-5 mr-1 min-w-[1.00rem] w-4">
+                                              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 351.3 522" xml:space="preserve" fill="rgb(51, 51, 51)" style="overflow-block: hidden; overflow-inline: hidden;" class="h-4 max-h-4 break-words align-middle w-3 inline overflow-hidden"><path d="M325 192H204l19.3-162.6c.1-.8.1-3 .1-3C223.3 11.6 211.8 0 197 0c-8.4 0-16.2 4-21.4 11l-.1.1L5.2 266.6C1.9 271.1 0 276.8 0 282.3c0 14.8 11.6 26.3 26.3 26.3h99.9l-19.5 184.2c-.1.8-.1 2.7-.1 2.8 0 14.8 11.6 26.3 26.3 26.3 8.4 0 16.1-4 21.3-10.9l.1-.1 191.8-277c3.3-4.5 5.2-10.2 5.2-15.7 0-14.6-11.5-26.2-26.3-26.2zm-154.2 13.8c-.5 4.4.9 8.9 3.8 12.3 3 3.3 7.2 5.3 11.7 5.3l129.2-.1L140 476.8l19.3-182.1c.5-4.4-.9-8.8-3.9-12.2-3-3.3-7.2-5.2-11.6-5.2L36 276.9 189.6 46.5l-18.8 159.3z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path></svg>
+                                            </span>
+                                            <span class="h-4 w-24">Instant Confirm</span>
+                                          </div>
+                                          <div style="flex-shrink: 0;" class="items-center basis-1/2 h-5 mb-2 max-w-[50%] px-2 relative w-full flex">
+                                            <span class="h-5 mr-1 min-w-[1.00rem] w-4">
+                                              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 310.1 525.8" xml:space="preserve" fill="rgb(51, 51, 51)" style="overflow-block: hidden; overflow-inline: hidden;" class="h-4 max-h-4 break-words align-middle w-2.5 inline overflow-hidden">
+                                                <path d="M154.1 488.9c12.4 0 22.5-10.1 22.5-22.5s-10.1-22.5-22.5-22.5-22.5 10.1-22.5 22.5 10.1 22.5 22.5 22.5zm0-30c4.1 0 7.5 3.4 7.5 7.5s-3.4 7.5-7.5 7.5-7.5-3.4-7.5-7.5 3.4-7.5 7.5-7.5z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <path d="M265.1 1.4h-220c-23.7 0-43 19.3-43 43v437c0 23.7 19.3 43 43 43h220c23.7 0 43-19.3 43-43v-437c0-23.7-19.3-43-43-43zm-237 60v-17c0-9.4 7.6-17 17-17h220c9.4 0 17 7.6 17 17v17h-254zm30 360c0-7.2-5.8-13-13-13h-17v-321h254v321h-207c-7.2 0-13 5.8-13 13s5.8 13 13 13h207v47c0 9.4-7.6 17-17 17h-220c-9.4 0-17-7.6-17-17v-47h17c7.1 0 13-5.8 13-13z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <path d="M184.1 35.4h-30c-5 0-9 4-9 9s4 9 9 9h30c5 0 9-4 9-9s-4.1-9-9-9z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <circle cx="124.1" cy="44.4" r="9" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></circle>
+                                              </svg>
+                                            </span>
+                                            <span class="h-4 w-20">Mobile Ticket</span>
+                                          </div>
+                                          <div style="flex-shrink: 0;" class="items-center basis-1/2 h-5 mb-2 max-w-[50%] px-2 relative w-full flex">
+                                            <span class="h-5 mr-1 min-w-[1.00rem] w-4">
+                                              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" xml:space="preserve" fill="rgb(51, 51, 51)" style="overflow-block: hidden; overflow-inline: hidden;" class="h-4 max-h-4 break-words align-middle w-4 inline overflow-hidden">
+                                                <path d="M256 512c141.1 0 256-114.9 256-256S397.1 0 256 0 0 114.9 0 256s114.9 256 256 256zm0-477.9c122.4 0 221.9 99.5 221.9 221.9S378.4 477.9 256 477.9 34.1 378.4 34.1 256 133.6 34.1 256 34.1z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <path d="M330.7 337.6c3.2 2.6 6.9 3.8 10.7 3.8 5 0 10-2.2 13.3-6.4 5.9-7.3 4.7-18.1-2.6-24l-78.9-63.1V119.5c0-9.4-7.7-17.1-17.1-17.1-9.4 0-17.1 7.7-17.1 17.1V256c0 5.2 2.4 10.1 6.4 13.3l85.3 68.3z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                              </svg>
+                                            </span>
+                                            <span class="h-4 w-20">Flexible Hours</span>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <form action="https://paristicketshop.com/cart/add" class="w-64">
+                                        <span class="flex-wrap w-72 flex -m-3.5"> </span>
+                                      </form>
+                                    </a>
+                                  </div>
+
+                                  <div class="mt-auto pb-4 px-8 pt-3 w-80">
+                                    <a href="https://paristicketshop.com/paris-river-cruises-combo-tickets/versailles-palace-entry-ticket-for-the-palace-eiffel-tower-entry-ticketseine-boat-tour-combo?check-availability" style="appearance: button;" class="bg-teal-700 text-white cursor-pointer h-10 py-1.5 px-3 w-full border-2 border-teal-700 border-solid rounded-lg" id="a-5">Check availability</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                          <li style="overflow-block: visible; overflow-inline: visible;" class="cursor-grab float-left h-[35.38rem] text-center w-80 list-item p-1.5">
+                            <div class="flex-col h-full max-w-[19.13rem] relative w-full flex border-2 border-stone-300 border-solid rounded-xl m-auto">
+                              <div class="flex-grow h-[34.63rem] min-h-[0.13rem] w-72 rounded-xl">
+                                <div class="flex-col h-full w-80 flex -m-3.5">
+                                  <div style="flex-shrink: 0;" class="px-4 relative w-full">
+                                    <div class="h-60 w-72">
+                                      <div style="background-position: 50% 50%; overflow-block: hidden; overflow-inline: hidden;" class="bg-[url(&quot;https://paristicketshop.com/storage/list/versailleslouvre_576x576.webp&quot;)] bg-cover rounded-tl-xl rounded-tr-xl h-60 pt-[80%] relative w-72 overflow-hidden">
+                                        <div style="overflow-block: visible; overflow-inline: visible;" class="bottom-[11.50rem] absolute w-full z-[8] p-3">
+                                          <div class="bg-blue-500 text-white h-8 leading-5 py-1 px-4 pt-1.5 relative w-44 inline-block rounded-lg m-1">Highly Recommended</div>
+                                        </div>
+                                        <a href="https://paristicketshop.com/paris-river-cruises-combo-tickets/versailles-palacelouvre-museum-combo-tickets" style="overflow-block: visible; overflow-inline: visible;" class="text-blue-900 cursor-pointer h-full absolute w-full z-[9]"> </a>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <div style="flex-shrink: 0;" class="px-4 relative w-full">
+                                    <a href="https://paristicketshop.com/paris-river-cruises-combo-tickets/versailles-palacelouvre-museum-combo-tickets" class="cursor-pointer h-44 px-4 w-full">
+                                      <span class="text-lg font-semibold h-14 leading-[1.13rem] py-4 w-64">
+                                        <span class="flex-wrap h-6 w-72 flex -m-3.5">
+                                          <span style="flex-shrink: 0;" class="basis-1/2 h-6 max-w-[50%] pl-4 pr-1 relative w-full">
+                                            <span class="items-center text-base h-6 leading-4 py-1 uppercase w-24 inline-flex"> <i class="text-blue-900 h-4 mr-1.5 w-2.5"></i> <span class="h-4 w-20">Versailles</span> </span>
+                                          </span>
+                                          <span style="flex-shrink: 0;" class="basis-1/2 h-6 max-w-[50%] pl-1 pr-4 relative text-right w-full"> </span>
+                                        </span>
+                                      </span>
+
+                                      <span class="h-12 mb-1 min-h-[2.88rem] w-64 min-[576px]:min-h-[2.88rem]">
+                                        <h2 class="font-semibold h-11 leading-[1.38rem] mb-2 w-64">Versailles &amp; Louvre + Digital Companion (combo)</h2>
+                                      </span>
+
+                                      <span class="items-center flex-wrap h-12 w-64 flex">
+                                        <span class="h-12 w-14 inline-block"
+                                          ><span class="font-bold h-12 w-14 rounded-2xl"><span class="text-sm leading-5">from</span><br />€ 59,90</span></span
+                                        >
+
+                                        <span class="h-6 order-1 w-1.5">&nbsp;</span>
+                                      </span>
+
+                                      <div class="text-sm h-8 leading-4 pt-1.5 w-64">
+                                        <div class="flex-wrap h-7 w-72 flex -m-2">
+                                          <div style="flex-shrink: 0;" class="items-center basis-1/2 h-5 mb-2 max-w-[50%] px-2 relative w-full flex">
+                                            <span class="h-5 mr-1 min-w-[1.00rem] w-4">
+                                              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 351.3 522" xml:space="preserve" fill="rgb(51, 51, 51)" style="overflow-block: hidden; overflow-inline: hidden;" class="h-4 max-h-4 break-words align-middle w-3 inline overflow-hidden"><path d="M325 192H204l19.3-162.6c.1-.8.1-3 .1-3C223.3 11.6 211.8 0 197 0c-8.4 0-16.2 4-21.4 11l-.1.1L5.2 266.6C1.9 271.1 0 276.8 0 282.3c0 14.8 11.6 26.3 26.3 26.3h99.9l-19.5 184.2c-.1.8-.1 2.7-.1 2.8 0 14.8 11.6 26.3 26.3 26.3 8.4 0 16.1-4 21.3-10.9l.1-.1 191.8-277c3.3-4.5 5.2-10.2 5.2-15.7 0-14.6-11.5-26.2-26.3-26.2zm-154.2 13.8c-.5 4.4.9 8.9 3.8 12.3 3 3.3 7.2 5.3 11.7 5.3l129.2-.1L140 476.8l19.3-182.1c.5-4.4-.9-8.8-3.9-12.2-3-3.3-7.2-5.2-11.6-5.2L36 276.9 189.6 46.5l-18.8 159.3z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path></svg>
+                                            </span>
+                                            <span class="h-4 w-24">Instant Confirm</span>
+                                          </div>
+                                          <div style="flex-shrink: 0;" class="items-center basis-1/2 h-5 mb-2 max-w-[50%] px-2 relative w-full flex">
+                                            <span class="h-5 mr-1 min-w-[1.00rem] w-4">
+                                              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 310.1 525.8" xml:space="preserve" fill="rgb(51, 51, 51)" style="overflow-block: hidden; overflow-inline: hidden;" class="h-4 max-h-4 break-words align-middle w-2.5 inline overflow-hidden">
+                                                <path d="M154.1 488.9c12.4 0 22.5-10.1 22.5-22.5s-10.1-22.5-22.5-22.5-22.5 10.1-22.5 22.5 10.1 22.5 22.5 22.5zm0-30c4.1 0 7.5 3.4 7.5 7.5s-3.4 7.5-7.5 7.5-7.5-3.4-7.5-7.5 3.4-7.5 7.5-7.5z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <path d="M265.1 1.4h-220c-23.7 0-43 19.3-43 43v437c0 23.7 19.3 43 43 43h220c23.7 0 43-19.3 43-43v-437c0-23.7-19.3-43-43-43zm-237 60v-17c0-9.4 7.6-17 17-17h220c9.4 0 17 7.6 17 17v17h-254zm30 360c0-7.2-5.8-13-13-13h-17v-321h254v321h-207c-7.2 0-13 5.8-13 13s5.8 13 13 13h207v47c0 9.4-7.6 17-17 17h-220c-9.4 0-17-7.6-17-17v-47h17c7.1 0 13-5.8 13-13z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <path d="M184.1 35.4h-30c-5 0-9 4-9 9s4 9 9 9h30c5 0 9-4 9-9s-4.1-9-9-9z" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></path>
+                                                <circle cx="124.1" cy="44.4" r="9" fill="rgb(51, 51, 51)" stroke="#333333" style="overflow-block: visible; overflow-inline: visible;"></circle>
+                                              </svg>
+                                            </span>
+                                            <span class="h-4 w-20">Mobile Ticket</span>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <form action="https://paristicketshop.com/cart/add" class="w-64">
+                                        <span class="flex-wrap w-72 flex -m-3.5"> </span>
+                                      </form>
+                                    </a>
+                                  </div>
+
+                                  <div class="mt-auto pb-4 px-8 pt-3 w-80">
+                                    <a href="https://paristicketshop.com/paris-river-cruises-combo-tickets/versailles-palacelouvre-museum-combo-tickets?check-availability" style="appearance: button;" class="bg-teal-700 text-white cursor-pointer h-10 py-1.5 px-3 w-full border-2 border-teal-700 border-solid rounded-lg" id="a-6">Check availability</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="h-12 -mt-52 w-12 hidden min-[576px]:flex">
+                  <i class="items-center text-blue-900 h-10 justify-center leading-4 min-w-[2.50rem] w-10 flex border-2 border-blue-900 border-solid rounded-full"></i>
+                </div>
+              </div>
+
+              <div class="h-20 pt-6 text-center w-[84.38rem]">
+                <a href="https://paristicketshop.com/paris-river-cruises-combo-tickets" class="items-center text-red-600 cursor-pointer text-xl h-16 leading-[1.88rem] py-4 px-8 select-none w-40 inline-flex border-2 border-red-600 border-solid rounded-xl">View All</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="w-[119.13rem]">
+    <div class="w-[119.13rem]">
+      <div class="w-[119.13rem]"></div>
+    </div>
+  </div>
+  <div class="h-80 mt-auto w-[119.13rem]">
+    <div class="h-80 w-[119.13rem]">
+      <div class="h-80 w-[119.13rem]">
+        <footer class="bg-gray-600 text-white h-80 mt-auto w-[119.13rem] p-4">
+          <div class="h-60 pb-9 pt-5 w-[117.25rem]">
+            <div class="h-44 max-w-[77.50rem] px-4 w-full m-auto min-[576px]:max-w-[33.75rem] md:max-w-[45.00rem] min-[992px]:max-w-[60.00rem] min-[1200px]:max-w-[71.25rem]">
+              <div class="flex-wrap h-44 w-[77.50rem] flex -m-3.5">
+                <div style="flex-shrink: 0;" class="items-start basis-[66.6667%] h-44 mb-6 px-4 relative w-full flex min-[992px]:max-w-[33.3333%] min-[1200px]:max-w-[66.6667%] min-[1200px]:mb-0">
+                  <div class="h-44 w-full">
+                    <div class="h-24 mb-5 w-[49.88rem]">
+                      <a href="https://paristicketshop.com" class="cursor-pointer h-24 max-w-[12.50rem] w-full inline-block">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 637.04 317.85" fill="rgb(0, 0, 0)" style="overflow-block: hidden; overflow-inline: hidden;" class="h-24 align-middle w-full inline overflow-hidden">
+                          <defs fill="rgb(255, 255, 255)" style="overflow-block: visible; overflow-inline: visible;"></defs>
+                          <g fill="rgb(255, 255, 255)" style="overflow-block: visible; overflow-inline: visible;">
+                            <path d="M6.29,155.2l-1.97-6.76C1.38,137.2-.2,126.04.33,115.71c1.74-34.22,25.99-53.33,49.25-68.69,16.81-11.1,34.82-20.67,49.65-34.24,4.43-4.06,8.53-8.45,12.83-12.67.12-.12.16-.15.38-.06,1.66,8.01,3.34,16.05,4.49,23.97,1.19,8.27,1.81,15.39.66,22.83-3.48,22.46-17.32,37.86-32.83,49.93-22.83,17.77-50.11,29.91-70.8,50.29-2.34,2.31-4.55,4.73-6.84,7.08-.29.29-.53.74-.81,1.05Z" fill="rgb(255, 255, 255)" stroke="#ffffff"></path>
+                            <path d="M6.06,236.64l-1.97-6.76C1.15,218.65-.43,207.49.1,197.16c1.74-34.22,25.99-53.33,49.25-68.69,16.81-11.1,34.82-20.67,49.65-34.24,4.43-4.06,8.53-8.45,12.83-12.67.12-.12.16-.15.38-.06,1.66,8.01,3.34,16.05,4.49,23.97,1.19,8.27,1.81,15.39.66,22.83-3.48,22.46-17.32,37.86-32.83,49.93-22.83,17.77-50.11,29.91-70.8,50.29-2.34,2.31-4.55,4.73-6.84,7.08-.29.29-.53.74-.81,1.05Z" fill="rgb(255, 255, 255)" stroke="#ffffff"></path>
+                            <path d="M6.12,317.85l-1.97-6.76c-2.93-11.24-4.51-22.39-3.98-32.72,1.74-34.22,25.99-53.33,49.25-68.69,16.81-11.1,34.82-20.67,49.65-34.24,4.43-4.06,8.53-8.45,12.83-12.67.12-.12.16-.15.38-.06,1.66,8.01,3.34,16.05,4.49,23.97,1.19,8.27,1.81,15.39.66,22.83-3.48,22.46-17.32,37.86-32.83,49.93-22.83,17.77-50.11,29.91-70.8,50.29-2.34,2.31-4.55,4.73-6.84,7.08-.29.29-.53.74-.81,1.05Z" fill="rgb(255, 255, 255)" stroke="#ffffff"></path>
+                            <path d="M181.19,172.57V62.61h42.2c12.67,0,22.73,3.05,30.16,9.14,7.43,6.09,11.14,15.09,11.14,27s-3.72,20.85-11.14,27c-7.43,6.15-17.48,9.22-30.16,9.22h-15.81v37.61h-26.39ZM207.58,112.02h15.81c4.75,0,8.34-1.32,10.78-3.97,2.43-2.65,3.65-5.75,3.65-9.3s-1.22-6.75-3.65-9.42c-2.43-2.68-6.02-4.02-10.78-4.02h-15.81v26.71Z" fill="rgb(255, 255, 255)" stroke="#ffffff"></path>
+                            <path d="M263.71,172.57l37.04-109.97h33.35l34.99,109.97h-27.62l-5.98-19.34h-37.94l-5.98,19.34h-27.86ZM304.19,133.81h25.32l-12.46-40.23-12.87,40.23Z" fill="rgb(255, 255, 255)" stroke="#ffffff"></path>
+                            <path d="M385.88,172.57V62.61h42.94c13.77,0,24.46,3.15,32.08,9.46,7.62,6.31,11.43,14.76,11.43,25.36s-3.81,18.7-11.43,24.95c-7.62,6.26-18.31,9.38-32.08,9.38h-16.72v40.81h-26.22ZM412.11,114.72h13.77c6.5,0,11.38-1.35,14.63-4.06,3.25-2.7,4.88-6.16,4.88-10.37s-1.38-7.96-4.14-10.78c-2.76-2.81-6.9-4.22-12.42-4.22h-16.72v29.42ZM443.25,172.57l-26.8-53.1h27.7l33.43,53.1h-34.33Z" fill="rgb(255, 255, 255)" stroke="#ffffff"></path>
+                            <path d="M496.67,172.57V62.61h26.22v109.97h-26.22Z" fill="rgb(255, 255, 255)" stroke="#ffffff"></path>
+                            <path d="M592.14,175.2c-7.87,0-15.16-1.33-21.88-3.97-6.72-2.65-12.18-6.8-16.39-12.46-4.21-5.65-6.53-13.02-6.96-22.08h25.89c0,3.33.85,6.09,2.54,8.28,1.69,2.19,4,3.8,6.92,4.83,2.92,1.04,6.16,1.56,9.71,1.56,2.84,0,5.5-.25,7.99-.74,2.49-.49,4.49-1.36,6.02-2.62,1.53-1.26,2.29-2.98,2.29-5.16,0-2.68-.81-4.67-2.42-5.98-1.61-1.31-4.52-2.81-8.73-4.51l-23.93-10.41c-7.87-3.39-13.99-7.38-18.36-11.96-4.37-4.59-6.56-10.84-6.56-18.77,0-9.29,3.78-16.78,11.35-22.49,7.57-5.71,17.93-8.56,31.1-8.56s23.65,3.15,30.81,9.46c7.16,6.31,11.17,15.31,12.05,27h-25.73c-.66-3.61-2.25-6.64-4.79-9.1-2.54-2.46-6.65-3.69-12.33-3.69-4.1,0-7.4.75-9.92,2.25-2.51,1.5-3.77,3.37-3.77,5.61,0,2.08.81,3.72,2.42,4.92,1.61,1.2,4.03,2.51,7.25,3.93l25.32,10.73c8.41,3.66,14.68,7.95,18.81,12.87,4.12,4.92,6.19,10.82,6.19,17.7,0,7.38-1.76,13.53-5.29,18.48-3.52,4.94-8.63,8.66-15.32,11.14-6.69,2.49-14.79,3.73-24.3,3.73Z" fill="rgb(255, 255, 255)" stroke="#ffffff"></path>
+                            <path d="M181.76,210.31v-5.25h38.3v5.25h-17.5l1.37-1.41v45.35h-6.11v-45.35l1.37,1.41h-17.43Z" fill="rgb(255, 255, 255)" stroke="#ffffff"></path>
+                            <path d="M228.4,254.24v-49.19h6.11v49.19h-6.11Z" fill="rgb(255, 255, 255)" stroke="#ffffff"></path>
+                            <path d="M267.4,255.18c-4.33,0-8.07-1.09-11.2-3.27s-5.55-5.21-7.24-9.09c-1.7-3.88-2.55-8.37-2.55-13.49,0-5.46.92-10.05,2.76-13.79,1.84-3.73,4.35-6.56,7.52-8.48,3.17-1.92,6.74-2.88,10.71-2.88,5.25,0,9.47,1.31,12.67,3.94,3.2,2.62,5.4,6.04,6.6,10.24l-6.58,1.33c-1.02-3.05-2.64-5.49-4.88-7.3-2.23-1.81-4.84-2.72-7.81-2.72-2.58,0-4.97.74-7.15,2.21-2.18,1.48-3.94,3.67-5.27,6.6-1.33,2.92-2,6.54-2,10.85,0,3.92.53,7.4,1.59,10.46,1.06,3.05,2.65,5.46,4.78,7.21,2.13,1.75,4.81,2.62,8.05,2.62,3.89,0,6.98-1.04,9.26-3.13,2.28-2.09,3.43-4.83,3.43-8.22h6.66c0,3.52-.81,6.55-2.43,9.07-1.62,2.52-3.88,4.46-6.79,5.82s-6.29,2.04-10.12,2.04Z" fill="rgb(255, 255, 255)" stroke="#ffffff"></path>
+                            <path d="M298.34,205.06h6.19v49.19h-6.19v-49.19ZM326.61,205.06h8.46l-31.41,32.35v-8.62l22.95-23.73ZM312.51,225.81l23.89,28.43h-7.99l-20.29-24.44,4.39-3.99Z" fill="rgb(255, 255, 255)" stroke="#ffffff"></path>
+                            <path d="M345.84,254.24v-49.19h30.31v5.25h-24.2v16.53h22.79v5.25h-22.79v16.84h24.2v5.33h-30.31Z" fill="rgb(255, 255, 255)" stroke="#ffffff"></path>
+                            <path d="M382.49,210.31v-5.25h38.3v5.25h-17.5l1.37-1.41v45.35h-6.11v-45.35l1.37,1.41h-17.43Z" fill="rgb(255, 255, 255)" stroke="#ffffff"></path>
+                            <path d="M463.48,255.18c-3.29,0-6.31-.59-9.05-1.78-2.74-1.19-4.95-2.94-6.62-5.27-1.67-2.32-2.53-5.2-2.58-8.62h5.95c0,2.3.56,4.18,1.68,5.66,1.12,1.48,2.61,2.57,4.46,3.29,1.85.72,3.88,1.08,6.07,1.08,2.38,0,4.44-.38,6.19-1.14s3.1-1.76,4.05-3c.95-1.24,1.43-2.6,1.43-4.09,0-2.09-.64-3.78-1.92-5.07-1.28-1.29-3.17-2.34-5.68-3.15l-8.69-3.05c-4.07-1.46-7.15-3.13-9.24-5.01-2.09-1.88-3.13-4.52-3.13-7.91,0-3.81,1.47-6.92,4.41-9.32,2.94-2.4,7.11-3.6,12.51-3.6,5.01,0,8.93,1.16,11.75,3.47,2.82,2.31,4.44,5.41,4.86,9.3h-6.03c-.39-2.27-1.46-4.04-3.19-5.31-1.74-1.27-4.2-1.9-7.38-1.9s-5.76.72-7.56,2.15c-1.8,1.44-2.7,3.25-2.7,5.44,0,1.8.57,3.23,1.7,4.29s2.92,2,5.35,2.84l10.18,3.52c3.52,1.17,6.31,2.82,8.36,4.93s3.07,4.86,3.07,8.22c0,2.61-.7,4.97-2.09,7.09-1.4,2.12-3.45,3.8-6.17,5.05-2.72,1.25-6.04,1.88-9.99,1.88Z" fill="rgb(255, 255, 255)" stroke="#ffffff"></path>
+                            <path d="M495.08,205.06h6.11v21.7h24.36v-21.7h6.03v49.19h-6.03v-22.24h-24.36v22.24h-6.11v-49.19Z" fill="rgb(255, 255, 255)" stroke="#ffffff"></path>
+                            <path d="M564.82,255.18c-4.07,0-7.71-.94-10.93-2.82s-5.74-4.71-7.6-8.48c-1.85-3.77-2.78-8.49-2.78-14.16s.93-10.5,2.78-14.27c1.85-3.77,4.39-6.59,7.6-8.46,3.21-1.87,6.85-2.8,10.93-2.8s7.71.94,10.93,2.82c3.21,1.88,5.74,4.71,7.6,8.5,1.85,3.79,2.78,8.52,2.78,14.22s-.93,10.46-2.78,14.23c-1.85,3.77-4.39,6.59-7.6,8.44-3.21,1.85-6.85,2.78-10.93,2.78ZM564.82,249.54c4.62,0,8.27-1.68,10.95-5.05,2.68-3.37,4.01-8.32,4.01-14.84s-1.34-11.32-4.01-14.78-6.32-5.19-10.95-5.19-8.2,1.74-10.91,5.21c-2.7,3.47-4.05,8.42-4.05,14.84s1.35,11.43,4.05,14.78,6.34,5.03,10.91,5.03Z" fill="rgb(255, 255, 255)" stroke="#ffffff"></path>
+                            <path d="M597.83,254.24v-49.19h15.82c5.4,0,9.54,1.37,12.39,4.09,2.86,2.73,4.29,6.43,4.29,11.1s-1.43,8.28-4.29,10.99c-2.86,2.7-6.99,4.05-12.39,4.05h-9.63v18.95h-6.19ZM604.02,229.96h9.63c3.42,0,6.01-.87,7.77-2.62,1.76-1.75,2.64-4.11,2.64-7.09s-.88-5.44-2.64-7.24c-1.76-1.8-4.35-2.7-7.77-2.7h-9.63v19.66Z" fill="rgb(255, 255, 255)" stroke="#ffffff"></path>
+                          </g>
+                        </svg>
+                      </a>
+                    </div>
+
+                    <div class="h-16 w-full">
+                      <div class="h-16 w-[49.88rem]">
+                        <div class="h-16 w-[49.88rem]">
+                          <div class="flex-wrap h-16 w-[51.75rem] flex -m-3.5">
+                            <div class="flex-grow h-16 px-4 relative w-full">
+                              <div class="h-12 mb-4 w-[49.88rem]">
+                                <p class="h-12 mb-4 w-[49.88rem]"><span>This website operates as an independent provider of tourist services and is not affiliated with, sponsored by, authorized by, or operated by the Louvre Museum or any of its official managing entities</span></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div style="flex-shrink: 0;" class="items-start basis-[16.6667%] h-44 mb-6 px-4 relative w-full flex min-[992px]:max-w-[16.6667%] min-[1200px]:max-w-[16.6667%] min-[1200px]:mb-0">
+                  <div class="h-20 w-full">
+                    <div class="h-20 w-44">
+                      <div class="h-20 w-44">
+                        <div class="h-20 w-44">
+                          <div class="text-2xl font-bold h-9 leading-[2.13rem] mb-4 w-44">About</div>
+                          <ul class="flex-col h-8 w-44 flex list-disc rounded">
+                            <li class="h-8 py-1 relative w-44 rounded">
+                              <a href="https://paristicketshop.com/blog" class="items-center cursor-pointer h-6 justify-center opacity-[0.44] w-44 flex min-[992px]:justify-start">
+                                <span> </span>
+                                <span class="h-6 w-28"> Adventure Blog </span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div style="flex-shrink: 0;" class="items-start basis-[16.6667%] h-44 justify-center px-4 relative w-full flex min-[992px]:max-w-[25%] min-[1200px]:max-w-[16.6667%]">
+                  <div class="h-28 w-48">
+                    <div class="text-2xl font-bold h-9 leading-[2.13rem] mb-4 w-48">Contact us</div>
+                    <div class="h-6 mb-4 w-48">
+                      <ul class="h-6 opacity-[0.44] w-48 list-none">
+                        <li class="h-6 w-48 list-item">
+                          <a href="https://paristicketshop.com/mailto:info@paristicketshop.com" class="cursor-pointer">info@paristicketshop.com</a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="h-8 -mt-2 w-full">
+                      <div class="h-8 w-48">
+                        <div class="h-8 w-48">
+                          <ul class="flex-col h-8 w-48 flex list-disc rounded">
+                            <li class="h-8 py-1 relative w-48 rounded">
+                              <a href="https://paristicketshop.com/contact" class="items-center cursor-pointer h-6 justify-center opacity-[0.44] w-48 flex min-[992px]:justify-start">
+                                <span class="h-6 w-20"> Contact us </span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="h-16 -mb-3.5 -ml-3.5 -mr-3.5 py-4 w-[119.13rem]">
+            <div class="h-10 max-w-[77.50rem] px-4 w-full m-auto min-[576px]:max-w-[33.75rem] md:max-w-[45.00rem] min-[992px]:max-w-[60.00rem] min-[1200px]:max-w-[71.25rem]">
+              <div class="border-t-white/[0.44] border-t-2 h-10 opacity-[0.44] pt-4 w-[75.63rem] border-solid">
+                <div class="flex-wrap h-6 w-[77.50rem] flex -m-3.5">
+                  <div style="flex-shrink: 0;" class="items-center basis-full h-6 justify-center mb-6 px-4 relative w-full flex md:mb-0">
+                    <ul class="h-6 text-center w-[45.88rem] list-none">
+                      <li class="h-6 mr-2 w-24 inline-block">
+                        <a href="https://paristicketshop.com/privacy-policy" class="cursor-pointer">Privacy Policy</a>
+                      </li>
+                      <li class="h-6 mr-2 w-40 inline-block">
+                        <a href="https://paristicketshop.com/terms-and-conditions" class="cursor-pointer">Terms and Conditions</a>
+                      </li>
+                      <li class="h-6 mr-2 w-24 inline-block">
+                        <a href="https://paristicketshop.com/refund-policy" class="cursor-pointer">Refund Policy</a>
+                      </li>
+                      <li class="h-6 w-80 inline-block"><span>© 2025.</span> Paris Ticket Shop All rights reserved!</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>
