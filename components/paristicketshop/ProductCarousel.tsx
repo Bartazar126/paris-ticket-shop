@@ -17,9 +17,18 @@ export function ProductCarousel({ products }: ProductCarouselProps) {
   const [maxIndex, setMaxIndex] = useState(0);
   const dragState = useRef<{
     active: boolean;
+    dragging: boolean;
     startX: number;
     startScroll: number;
-  }>({ active: false, startX: 0, startScroll: 0 });
+    pointerId: number | null;
+  }>({
+    active: false,
+    dragging: false,
+    startX: 0,
+    startScroll: 0,
+    pointerId: null,
+  });
+  const DRAG_THRESHOLD = 8;
 
   const safeIndex = Math.min(index, maxIndex);
 
@@ -51,30 +60,52 @@ export function ProductCarousel({ products }: ProductCarouselProps) {
   const onPointerDown = (event: React.PointerEvent) => {
     const viewport = viewportRef.current;
     if (!viewport) return;
+    // Don't steal clicks from links/buttons (Check availability, title, etc.)
+    const target = event.target as HTMLElement | null;
+    if (target?.closest("a, button, input, textarea, select, label")) {
+      return;
+    }
     dragState.current = {
       active: true,
+      dragging: false,
       startX: event.clientX,
       startScroll: viewport.scrollLeft,
+      pointerId: event.pointerId,
     };
-    viewport.setPointerCapture(event.pointerId);
   };
 
   const onPointerMove = (event: React.PointerEvent) => {
     if (!dragState.current.active || !viewportRef.current) return;
     const delta = event.clientX - dragState.current.startX;
+    if (!dragState.current.dragging) {
+      if (Math.abs(delta) < DRAG_THRESHOLD) return;
+      dragState.current.dragging = true;
+      try {
+        viewportRef.current.setPointerCapture(event.pointerId);
+      } catch {
+        /* ignore */
+      }
+    }
     viewportRef.current.scrollLeft = dragState.current.startScroll - delta;
   };
 
   const endDrag = (event: React.PointerEvent) => {
     if (!dragState.current.active || !viewportRef.current) return;
+    const didDrag = dragState.current.dragging;
     dragState.current.active = false;
-    const next = Math.round(viewportRef.current.scrollLeft / CARD_WIDTH);
-    scrollToIndex(next);
+    dragState.current.dragging = false;
+    if (didDrag) {
+      const next = Math.round(viewportRef.current.scrollLeft / CARD_WIDTH);
+      scrollToIndex(next);
+    }
     try {
-      viewportRef.current.releasePointerCapture(event.pointerId);
+      if (dragState.current.pointerId !== null) {
+        viewportRef.current.releasePointerCapture(event.pointerId);
+      }
     } catch {
       /* ignore */
     }
+    dragState.current.pointerId = null;
   };
 
   return (

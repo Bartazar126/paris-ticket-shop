@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { League_Spartan, Open_Sans, Poppins } from "next/font/google";
 import "./globals.css";
+import "./booking-picker.css";
 
 const openSans = Open_Sans({
   variable: "--font-open-sans",

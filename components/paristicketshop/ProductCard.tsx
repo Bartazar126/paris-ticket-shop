@@ -88,39 +88,41 @@ export function ProductCard({ product }: ProductCardProps) {
           </Link>
         </h3>
 
-        <div className="mb-1 flex min-h-12 flex-wrap items-center">
+        <div className="mb-1 min-h-12">
           {hasPrice ? (
-            <>
-              {displayPrice ? (
-                <span
-                  className={`inline-block text-base font-bold leading-tight ${
-                    displayOriginal ? "text-[#dc3545]" : "text-[#333]"
-                  }`}
-                >
-                  {product.pricePrefix ? (
-                    <span className="block text-[0.8em] font-normal leading-5 text-[#333]">
-                      {product.pricePrefix}
-                    </span>
-                  ) : null}
-                  {displayPrice}
+            <div>
+              {product.pricePrefix && displayPrice ? (
+                <span className="block text-[0.8em] font-normal leading-5 text-[#333]">
+                  {product.pricePrefix}
                 </span>
               ) : null}
-              {displayOriginal ? (
-                <span className="order-1 inline-block pl-2.5 text-base font-bold leading-tight text-[#333] opacity-60 line-through">
-                  {displayOriginal}
-                </span>
-              ) : null}
-            </>
+              <div className="flex flex-wrap items-baseline gap-x-2.5">
+                {displayPrice ? (
+                  <span
+                    className={`text-base font-bold leading-tight ${
+                      displayOriginal ? "text-[#dc3545]" : "text-[#333]"
+                    }`}
+                  >
+                    {displayPrice}
+                  </span>
+                ) : null}
+                {displayOriginal ? (
+                  <span className="text-base font-bold leading-tight text-[#333] opacity-60 line-through">
+                    {displayOriginal}
+                  </span>
+                ) : null}
+              </div>
+            </div>
           ) : null}
         </div>
 
         <ProductFeatures features={product.features} />
       </div>
 
-      <div className="mt-auto px-[30px] pb-[15px] pt-2.5">
+      <div className="relative z-10 mt-auto px-[30px] pb-[15px] pt-2.5">
         <Link
           href={product.availabilityHref}
-          className="pts-availability-btn inline-flex h-10 w-full items-center justify-center rounded-lg border border-solid border-[#2f7f6b] bg-[#2f7f6b] px-3 py-1.5 text-center text-base font-normal text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2f7f6b]"
+          className="pts-availability-btn relative z-10 inline-flex h-10 w-full items-center justify-center rounded-lg border border-solid border-[#2f7f6b] bg-[#2f7f6b] px-3 py-1.5 text-center text-base font-normal text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2f7f6b]"
         >
           Check availability
         </Link>
