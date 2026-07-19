@@ -10,6 +10,7 @@ export type BaseAttraction = {
   label: string;
   shortLabel: string;
   needsTime: boolean;
+  image: string;
 };
 
 /** Variant leg ids that share closures with a base attraction. */
@@ -26,42 +27,50 @@ export const BASE_ATTRACTIONS: BaseAttraction[] = [
     label: "Seine River Cruise",
     shortLabel: "Cruise",
     needsTime: true,
+    image: "/paristicketshop/products/paris-seine-river-cruise_576x576.webp",
   },
   {
     id: "eiffel-tower",
     label: "Eiffel Tower",
     shortLabel: "Eiffel",
     needsTime: true,
+    image: "/paristicketshop/products/shutterstock-129708554_576x576.webp",
   },
   {
     id: "louvre",
     label: "Louvre Museum",
     shortLabel: "Louvre",
     needsTime: true,
+    image:
+      "/paristicketshop/products/gemini-generated-image-rtuynvrtuynvrtuy_576x576.webp",
   },
   {
     id: "versailles",
     label: "Versailles Palace",
     shortLabel: "Versailles",
     needsTime: true,
+    image: "/paristicketshop/products/versailles1_576x576.webp",
   },
   {
     id: "arc-de-triomphe",
     label: "Arc de Triomphe",
     shortLabel: "Arc",
     needsTime: true,
+    image: "/paristicketshop/products/arc-1_576x576.webp",
   },
   {
     id: "sainte-chapelle",
     label: "Sainte-Chapelle",
     shortLabel: "Chapelle",
     needsTime: true,
+    image: "/paristicketshop/products/saint-chapelle-2_576x576.webp",
   },
   {
     id: "conciergerie",
     label: "Conciergerie",
     shortLabel: "Conciergerie",
     needsTime: true,
+    image: "/paristicketshop/products/conciergerie-paris_576x576.webp",
   },
 ];
 
@@ -73,6 +82,10 @@ export function resolveAttractionId(legId: string): string {
 
 export function getBaseAttraction(id: string): BaseAttraction | undefined {
   return BASE_BY_ID.get(resolveAttractionId(id));
+}
+
+export function getAttractionImage(legId: string): string | undefined {
+  return getBaseAttraction(legId)?.image;
 }
 
 export function getTimeSlotsForAttraction(attractionId: string): string[] {

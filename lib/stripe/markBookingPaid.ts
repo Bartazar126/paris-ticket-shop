@@ -3,6 +3,7 @@ import { createAdminClient } from "@/lib/supabase/admin";
 
 export type PaidBookingSummary = {
   id: string;
+  product_slug: string;
   product_title: string;
   customer_name: string;
   customer_email: string;
@@ -16,6 +17,9 @@ export type PaidBookingSummary = {
   paid_at: string | null;
   stripe_session_id: string | null;
 };
+
+const BOOKING_SELECT =
+  "id, product_slug, product_title, customer_name, customer_email, adults, children, infants, total_amount, currency, status, selections, paid_at, stripe_session_id";
 
 export async function markBookingPaidFromSession(
   session: Stripe.Checkout.Session,
@@ -40,9 +44,7 @@ export async function markBookingPaidFromSession(
       stripe_payment_intent: paymentIntent,
     })
     .eq("id", bookingId)
-    .select(
-      "id, product_title, customer_name, customer_email, adults, children, infants, total_amount, currency, status, selections, paid_at, stripe_session_id",
-    )
+    .select(BOOKING_SELECT)
     .maybeSingle();
 
   if (error || !data) return null;
@@ -55,9 +57,7 @@ export async function getBookingBySessionId(
   const supabase = createAdminClient();
   const { data } = await supabase
     .from("pts_bookings")
-    .select(
-      "id, product_title, customer_name, customer_email, adults, children, infants, total_amount, currency, status, selections, paid_at, stripe_session_id",
-    )
+    .select(BOOKING_SELECT)
     .eq("stripe_session_id", sessionId)
     .maybeSingle();
   return (data as PaidBookingSummary | null) ?? null;

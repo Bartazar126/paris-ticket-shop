@@ -1,13 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { getAttractionImage } from "@/data/attractions";
+import { getProductDetail } from "@/data/productDetails";
 import { clearBookingDraft } from "@/lib/bookingSession";
+import { LazyFadeImage } from "./LazyFadeImage";
 import { useCurrency } from "./CurrencyContext";
+
+type Selection = {
+  legId: string;
+  label: string;
+  date: string;
+  time: string | null;
+};
 
 type BookingSummary = {
   id: string;
+  product_slug: string;
   product_title: string;
   customer_name: string;
   customer_email: string;
@@ -17,7 +28,7 @@ type BookingSummary = {
   total_amount: number;
   currency: string;
   status: string;
-  selections: { legId: string; label: string; date: string; time: string | null }[];
+  selections: Selection[];
   paid_at: string | null;
 };
 
@@ -98,6 +109,12 @@ export function ThankYouView() {
     };
   }, [sessionId]);
 
+  const productImage = useMemo(() => {
+    if (!booking?.product_slug) return undefined;
+    const detail = getProductDetail(booking.product_slug);
+    return detail?.gallery?.[0];
+  }, [booking?.product_slug]);
+
   if (status === "loading") {
     return (
       <div className="pts-container py-16 text-center">
@@ -144,84 +161,166 @@ export function ThankYouView() {
   }
 
   const paid = status === "paid" || booking?.status === "paid";
+  const selections = booking?.selections ?? [];
+  const ticketCount =
+    (booking?.adults ?? 0) + (booking?.children ?? 0) + (booking?.infants ?? 0);
 
   return (
-    <div className="pts-container py-10 pb-16">
-      <div className="mx-auto max-w-2xl text-center">
-        <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-[#2f7f6b]">
-          {paid ? "Payment successful" : "Order received"}
-        </p>
-        <h1 className="font-display mb-3 text-3xl font-semibold text-[#15399b] md:text-4xl">
-          Thank you{booking?.customer_name ? `, ${booking.customer_name}` : ""}!
-        </h1>
-        <p className="mb-8 text-zinc-600">
-          {paid
-            ? "Your tickets are confirmed. A receipt was sent to your email by Stripe."
-            : "Your payment is processing. We’ll confirm your booking shortly."}
-        </p>
-      </div>
-
-      {booking ? (
-        <div className="mx-auto max-w-2xl rounded-[10px] border border-solid border-[#d0d0d0] p-6 text-left">
-          <div className="mb-4 flex flex-wrap items-start justify-between gap-3 border-b border-solid border-[#eee] pb-4">
-            <div>
-              <p className="text-sm text-zinc-500">Order</p>
-              <p className="font-mono text-sm font-semibold text-zinc-800">
-                {booking.id.slice(0, 8).toUpperCase()}
-              </p>
-            </div>
-            <div className="text-right">
-              <p className="text-sm text-zinc-500">Total</p>
-              <p className="text-lg font-semibold tabular-nums text-zinc-900">
-                {formatPrice(Number(booking.total_amount))}
-              </p>
-            </div>
-          </div>
-
-          <h2 className="mb-2 text-lg font-semibold text-zinc-800">
-            {booking.product_title}
-          </h2>
-          <p className="mb-4 text-sm text-zinc-600">
-            Confirmation email:{" "}
-            <span className="font-semibold text-zinc-800">
-              {booking.customer_email}
-            </span>
+    <div className="pts-thankyou">
+      <div className="pts-container py-10 pb-16">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-[#2f7f6b]">
+            {paid ? "Payment successful" : "Order received"}
           </p>
-
-          <ul className="mb-4 space-y-2 border-t border-solid border-[#eee] pt-4">
-            {(booking.selections ?? []).map((sel) => (
-              <li
-                key={`${sel.legId}-${sel.date}-${sel.time}`}
-                className="flex flex-wrap justify-between gap-2 text-sm"
-              >
-                <span className="font-semibold text-zinc-800">{sel.label}</span>
-                <span className="text-zinc-600">
-                  {formatDisplayDate(sel.date)}
-                  {sel.time ? ` · ${sel.time}` : ""}
-                </span>
-              </li>
-            ))}
-          </ul>
-
-          <p className="text-sm text-zinc-600">
-            Tickets: {booking.adults} adult{booking.adults === 1 ? "" : "s"}
-            {booking.children > 0
-              ? ` · ${booking.children} child${booking.children === 1 ? "" : "ren"}`
-              : ""}
-            {booking.infants > 0
-              ? ` · ${booking.infants} infant${booking.infants === 1 ? "" : "s"}`
-              : ""}
+          <h1 className="font-display mb-3 text-3xl font-semibold text-[#15399b] md:text-4xl">
+            Thank you{booking?.customer_name ? `, ${booking.customer_name}` : ""}!
+          </h1>
+          <p className="mb-8 text-zinc-600">
+            {paid
+              ? "Your tickets are confirmed. A receipt was sent to your email by Stripe."
+              : "Your payment is processing. We’ll confirm your booking shortly."}
           </p>
         </div>
-      ) : null}
 
-      <div className="mx-auto mt-8 flex max-w-2xl flex-wrap justify-center gap-3">
-        <Link
-          href="/"
-          className="inline-flex rounded-lg bg-[#15399b] px-5 py-2.5 text-white"
-        >
-          Back to home
-        </Link>
+        {booking ? (
+          <div className="mx-auto max-w-3xl overflow-hidden rounded-[14px] border border-solid border-[#d8dee9] bg-white shadow-[0_10px_40px_rgba(15,23,42,0.06)]">
+            {productImage ? (
+              <div className="relative h-48 w-full md:h-56">
+                <LazyFadeImage
+                  src={productImage}
+                  alt={booking.product_title}
+                  fill
+                  className="object-cover"
+                  unoptimized
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/15 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-5 text-left text-white md:p-6">
+                  <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-white/80">
+                    Your package
+                  </p>
+                  <h2 className="font-display text-xl font-semibold leading-snug md:text-2xl">
+                    {booking.product_title}
+                  </h2>
+                </div>
+              </div>
+            ) : (
+              <div className="border-b border-solid border-[#eee] px-5 py-5 md:px-6">
+                <h2 className="font-display text-xl font-semibold text-[#15399b]">
+                  {booking.product_title}
+                </h2>
+              </div>
+            )}
+
+            <div className="grid gap-4 border-b border-solid border-[#eee] px-5 py-4 sm:grid-cols-3 md:px-6">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
+                  Order
+                </p>
+                <p className="mt-0.5 font-mono text-sm font-semibold text-zinc-800">
+                  {booking.id.slice(0, 8).toUpperCase()}
+                </p>
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
+                  Email
+                </p>
+                <p className="mt-0.5 truncate text-sm font-semibold text-zinc-800">
+                  {booking.customer_email}
+                </p>
+              </div>
+              <div className="sm:text-right">
+                <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
+                  Total
+                </p>
+                <p className="mt-0.5 text-lg font-semibold tabular-nums text-zinc-900">
+                  {formatPrice(Number(booking.total_amount))}
+                </p>
+              </div>
+            </div>
+
+            <div className="px-5 py-5 md:px-6">
+              <div className="mb-4 flex items-end justify-between gap-3">
+                <div>
+                  <h3 className="font-display text-lg font-semibold text-[#15399b]">
+                    Your visits
+                  </h3>
+                  <p className="text-sm text-zinc-500">
+                    {selections.length} attraction
+                    {selections.length === 1 ? "" : "s"} · {ticketCount} ticket
+                    {ticketCount === 1 ? "" : "s"}
+                  </p>
+                </div>
+              </div>
+
+              <ul className="space-y-3">
+                {selections.map((sel, index) => {
+                  const image = getAttractionImage(sel.legId);
+                  return (
+                    <li
+                      key={`${sel.legId}-${sel.date}-${sel.time}-${index}`}
+                      className="flex gap-3 rounded-[10px] border border-solid border-[#e8edf5] bg-[#f8fafc] p-3 sm:gap-4 sm:p-3.5"
+                    >
+                      <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-lg bg-[#e5eaf3] sm:h-24 sm:w-24">
+                        {image ? (
+                          <LazyFadeImage
+                            src={image}
+                            alt={sel.label}
+                            fill
+                            className="object-cover"
+                            unoptimized
+                          />
+                        ) : (
+                          <div className="flex h-full items-center justify-center text-sm font-bold text-[#15399b]">
+                            {index + 1}
+                          </div>
+                        )}
+                      </div>
+                      <div className="min-w-0 flex-1 self-center">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-[#2f7f6b]">
+                          Visit {index + 1}
+                        </p>
+                        <p className="mt-0.5 text-base font-semibold leading-snug text-zinc-900">
+                          {sel.label}
+                        </p>
+                        <p className="mt-1 text-sm text-zinc-600">
+                          {formatDisplayDate(sel.date)}
+                          {sel.time && sel.time !== "Flexible / anytime"
+                            ? ` · ${sel.time}`
+                            : sel.time === "Flexible / anytime"
+                              ? " · Flexible entry"
+                              : ""}
+                        </p>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+
+              <div className="mt-5 rounded-[10px] border border-solid border-[#e8edf5] bg-white px-4 py-3 text-sm text-zinc-700">
+                <p className="font-semibold text-zinc-800">Tickets</p>
+                <p className="mt-1">
+                  {booking.adults} adult{booking.adults === 1 ? "" : "s"}
+                  {booking.children > 0
+                    ? ` · ${booking.children} child${booking.children === 1 ? "" : "ren"}`
+                    : ""}
+                  {booking.infants > 0
+                    ? ` · ${booking.infants} infant${booking.infants === 1 ? "" : "s"}`
+                    : ""}
+                </p>
+              </div>
+            </div>
+          </div>
+        ) : null}
+
+        <div className="mx-auto mt-8 flex max-w-3xl flex-wrap justify-center gap-3">
+          <Link
+            href="/"
+            className="inline-flex rounded-lg bg-[#15399b] px-5 py-2.5 text-white"
+          >
+            Back to home
+          </Link>
+        </div>
       </div>
     </div>
   );
