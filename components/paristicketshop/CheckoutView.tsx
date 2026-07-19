@@ -2,15 +2,13 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { useCurrency } from "./CurrencyContext";
 import { LazyFadeImage } from "./LazyFadeImage";
 import {
-  clearBookingDraft,
   loadBookingDraft,
   type BookingDraft,
 } from "@/lib/bookingSession";
-import { createClient } from "@/lib/supabase/client";
-import { validateSelectionsAgainstClosures } from "@/lib/validateBookingSelections";
 
 const MAX_PER_TYPE = 10;
 
@@ -100,6 +98,8 @@ function QuantityStepper({
 
 export function CheckoutView() {
   const { formatPrice } = useCurrency();
+  const searchParams = useSearchParams();
+  const cancelled = searchParams.get("cancelled") === "1";
   const [draft, setDraft] = useState<BookingDraft | null>(null);
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
@@ -108,7 +108,6 @@ export function CheckoutView() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [acceptTos, setAcceptTos] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
 
@@ -161,36 +160,33 @@ export function CheckoutView() {
     setSaving(true);
     setSubmitError(null);
 
-    const validation = await validateSelectionsAgainstClosures(
-      draft.selections,
-    );
-    if (!validation.ok) {
+    try {
+      const res = await fetch("/api/checkout/create-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          productSlug: draft.slug,
+          productTitle: draft.productTitle,
+          customerName: name.trim(),
+          customerEmail: email.trim(),
+          customerPhone: phone.trim() || null,
+          adults,
+          children,
+          infants,
+          totalAmount: total,
+          currency: "EUR",
+          selections: draft.selections,
+        }),
+      });
+      const data = (await res.json()) as { url?: string; error?: string };
+      if (!res.ok || !data.url) {
+        throw new Error(data.error || "Could not start payment");
+      }
+      window.location.href = data.url;
+    } catch (e) {
       setSaving(false);
-      setSubmitError(validation.message);
-      return;
+      setSubmitError(e instanceof Error ? e.message : "Payment failed to start");
     }
-
-    const supabase = createClient();
-    const { error } = await supabase.from("pts_bookings").insert({
-      product_slug: draft.slug,
-      product_title: draft.productTitle,
-      customer_name: name.trim(),
-      customer_email: email.trim(),
-      customer_phone: phone.trim() || null,
-      adults,
-      children,
-      infants,
-      total_amount: total,
-      currency: "EUR",
-      status: "pending",
-      selections: draft.selections,
-    });
-    setSaving(false);
-    if (error) {
-      setSubmitError(error.message);
-      return;
-    }
-    setSubmitted(true);
   }
 
   if (!draft) {
@@ -212,37 +208,6 @@ export function CheckoutView() {
     );
   }
 
-  if (submitted) {
-    return (
-      <div className="pts-container py-16 text-center">
-        <h1 className="font-display mb-4 text-3xl font-semibold text-[#15399b]">
-          Request received
-        </h1>
-        <p className="mb-2 text-zinc-700">
-          Thanks{name ? `, ${name}` : ""}. Payment integration is coming soon —
-          we saved your selection for:
-        </p>
-        <p className="mb-2 font-semibold text-zinc-800">{draft.productTitle}</p>
-        <p className="mb-6 text-sm text-zinc-600">
-          {adults} adult{adults === 1 ? "" : "s"}
-          {children > 0
-            ? ` · ${children} child${children === 1 ? "" : "ren"}`
-            : ""}
-          {infants > 0
-            ? ` · ${infants} infant${infants === 1 ? "" : "s"}`
-            : ""}
-        </p>
-        <Link
-          href={draft.productHref}
-          className="inline-flex rounded-lg bg-[#2f7f6b] px-5 py-2.5 text-white"
-          onClick={() => clearBookingDraft()}
-        >
-          Back to product
-        </Link>
-      </div>
-    );
-  }
-
   return (
     <div className="pts-container py-8 pb-16">
       <h1 className="font-display mb-2 text-3xl font-semibold text-[#15399b] md:text-4xl">
@@ -252,6 +217,11 @@ export function CheckoutView() {
         Review your visit details, choose tickets, then continue when you&apos;re
         ready.
       </p>
+      {cancelled ? (
+        <p className="mb-6 rounded-lg border border-solid border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+          Payment was cancelled. You can review your details and try again.
+        </p>
+      ) : null}
 
       <div className="grid gap-8 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
         <div className="space-y-6">
@@ -463,7 +433,7 @@ export function CheckoutView() {
             onClick={() => void submitBooking()}
             className="pts-availability-btn inline-flex h-12 w-full items-center justify-center rounded-lg border border-solid border-[#2f7f6b] bg-[#2f7f6b] text-white disabled:cursor-not-allowed disabled:opacity-50"
           >
-            {saving ? "Saving…" : "Continue to payment"}
+            {saving ? "Redirecting to Stripe…" : "Continue to payment"}
           </button>
           {submitError ? (
             <p className="mt-2 text-center text-xs text-red-600">{submitError}</p>
@@ -474,8 +444,7 @@ export function CheckoutView() {
             </p>
           ) : null}
           <p className="mt-3 text-center text-xs text-zinc-500">
-            Payment (Stripe / PayPal) coming soon — this step confirms your
-            selection only.
+            Secure card payment powered by Stripe.
           </p>
           <div className="mt-4 flex flex-col gap-2 text-center text-sm">
             <Link

@@ -34,7 +34,16 @@ create table if not exists public.pts_bookings (
   currency text not null default 'EUR',
   status text not null default 'pending',
   selections jsonb not null default '[]'::jsonb,
+  stripe_session_id text,
+  stripe_payment_intent text,
+  paid_at timestamptz,
   created_at timestamptz not null default now()
+);
+
+create table if not exists public.pts_settings (
+  key text primary key,
+  value text not null default '',
+  updated_at timestamptz not null default now()
 );
 
 create table if not exists public.pts_articles (
@@ -58,6 +67,9 @@ create table if not exists public.pts_attraction_closures (
 );
 
 create index if not exists pts_bookings_created_at_idx on public.pts_bookings (created_at desc);
+create unique index if not exists pts_bookings_stripe_session_id_uidx
+  on public.pts_bookings (stripe_session_id)
+  where stripe_session_id is not null;
 create index if not exists pts_articles_views_idx on public.pts_articles (views desc);
 create index if not exists pts_products_slug_idx on public.pts_products (slug);
 create index if not exists pts_attraction_closures_attraction_date_idx
@@ -86,6 +98,7 @@ alter table public.pts_products enable row level security;
 alter table public.pts_bookings enable row level security;
 alter table public.pts_articles enable row level security;
 alter table public.pts_attraction_closures enable row level security;
+alter table public.pts_settings enable row level security;
 
 drop policy if exists "pts_admins_select_self_or_admin" on public.pts_admins;
 drop policy if exists "pts_admins_all_admin" on public.pts_admins;
@@ -98,6 +111,7 @@ drop policy if exists "pts_articles_public_read" on public.pts_articles;
 drop policy if exists "pts_articles_admin_write" on public.pts_articles;
 drop policy if exists "pts_attraction_closures_public_read" on public.pts_attraction_closures;
 drop policy if exists "pts_attraction_closures_admin_write" on public.pts_attraction_closures;
+drop policy if exists "pts_settings_admin_all" on public.pts_settings;
 
 create policy "pts_admins_select_self_or_admin"
   on public.pts_admins for select to authenticated
@@ -148,12 +162,19 @@ create policy "pts_attraction_closures_admin_write"
   using (public.is_pts_admin())
   with check (public.is_pts_admin());
 
+create policy "pts_settings_admin_all"
+  on public.pts_settings for all to authenticated
+  using (public.is_pts_admin())
+  with check (public.is_pts_admin());
+
 grant usage on schema public to anon, authenticated;
 grant select on public.pts_products to anon, authenticated;
 grant select, insert on public.pts_bookings to anon, authenticated;
 grant select, update, delete on public.pts_bookings to authenticated;
 grant select on public.pts_articles to anon, authenticated;
 grant select on public.pts_attraction_closures to anon, authenticated;
+grant select, insert, update, delete on public.pts_settings to authenticated, service_role;
+grant select, insert, update on public.pts_bookings to service_role;
 grant insert, update, delete on public.pts_products to authenticated;
 grant insert, update, delete on public.pts_articles to authenticated;
 grant insert, update, delete on public.pts_attraction_closures to authenticated;

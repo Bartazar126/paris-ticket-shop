@@ -12,6 +12,7 @@ const NAV = [
   { href: "/admin/bookings", label: "Foglalások" },
   { href: "/admin/articles", label: "Tartalomkezelő" },
   { href: "/admin/users", label: "Felhasználókezelő" },
+  { href: "/admin/settings", label: "Beállítások" },
 ] as const;
 
 type AdminShellProps = {

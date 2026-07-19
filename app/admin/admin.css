@@ -464,6 +464,20 @@
   background: #64748b;
 }
 
+.admin-pill--amber {
+  background: #d97706;
+}
+
+.admin-pill--red {
+  background: #dc2626;
+}
+
+.admin-settings-form {
+  display: grid;
+  gap: 1rem;
+  max-width: 36rem;
+}
+
 .admin-btn {
   display: inline-flex;
   align-items: center;
