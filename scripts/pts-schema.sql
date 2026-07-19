@@ -172,7 +172,7 @@ grant select on public.pts_products to anon, authenticated;
 grant select, insert on public.pts_bookings to anon, authenticated;
 grant select, update, delete on public.pts_bookings to authenticated;
 grant select on public.pts_articles to anon, authenticated;
-grant select on public.pts_attraction_closures to anon, authenticated;
+grant select on public.pts_attraction_closures to anon, authenticated, service_role;
 grant select, insert, update, delete on public.pts_settings to authenticated, service_role;
 grant select, insert, update on public.pts_bookings to service_role;
 grant insert, update, delete on public.pts_products to authenticated;
