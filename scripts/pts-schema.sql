@@ -47,9 +47,21 @@ create table if not exists public.pts_articles (
   updated_at timestamptz not null default now()
 );
 
+create table if not exists public.pts_attraction_closures (
+  id uuid primary key default gen_random_uuid(),
+  attraction_id text not null,
+  closed_date date not null,
+  closed_times text[] null,
+  note text null,
+  created_at timestamptz not null default now(),
+  unique (attraction_id, closed_date)
+);
+
 create index if not exists pts_bookings_created_at_idx on public.pts_bookings (created_at desc);
 create index if not exists pts_articles_views_idx on public.pts_articles (views desc);
 create index if not exists pts_products_slug_idx on public.pts_products (slug);
+create index if not exists pts_attraction_closures_attraction_date_idx
+  on public.pts_attraction_closures (attraction_id, closed_date);
 
 create or replace function public.is_pts_admin()
 returns boolean
@@ -73,6 +85,7 @@ alter table public.pts_admins enable row level security;
 alter table public.pts_products enable row level security;
 alter table public.pts_bookings enable row level security;
 alter table public.pts_articles enable row level security;
+alter table public.pts_attraction_closures enable row level security;
 
 drop policy if exists "pts_admins_select_self_or_admin" on public.pts_admins;
 drop policy if exists "pts_admins_all_admin" on public.pts_admins;
@@ -83,6 +96,8 @@ drop policy if exists "pts_bookings_admin_update" on public.pts_bookings;
 drop policy if exists "pts_bookings_anon_insert" on public.pts_bookings;
 drop policy if exists "pts_articles_public_read" on public.pts_articles;
 drop policy if exists "pts_articles_admin_write" on public.pts_articles;
+drop policy if exists "pts_attraction_closures_public_read" on public.pts_attraction_closures;
+drop policy if exists "pts_attraction_closures_admin_write" on public.pts_attraction_closures;
 
 create policy "pts_admins_select_self_or_admin"
   on public.pts_admins for select to authenticated
@@ -124,13 +139,24 @@ create policy "pts_articles_admin_write"
   using (public.is_pts_admin())
   with check (public.is_pts_admin());
 
+create policy "pts_attraction_closures_public_read"
+  on public.pts_attraction_closures for select to anon, authenticated
+  using (true);
+
+create policy "pts_attraction_closures_admin_write"
+  on public.pts_attraction_closures for all to authenticated
+  using (public.is_pts_admin())
+  with check (public.is_pts_admin());
+
 grant usage on schema public to anon, authenticated;
 grant select on public.pts_products to anon, authenticated;
 grant select, insert on public.pts_bookings to anon, authenticated;
 grant select, update, delete on public.pts_bookings to authenticated;
 grant select on public.pts_articles to anon, authenticated;
+grant select on public.pts_attraction_closures to anon, authenticated;
 grant insert, update, delete on public.pts_products to authenticated;
 grant insert, update, delete on public.pts_articles to authenticated;
+grant insert, update, delete on public.pts_attraction_closures to authenticated;
 grant select, insert, update, delete on public.pts_admins to authenticated;
 
 insert into public.pts_articles (title, slug, path, views, published_at) values

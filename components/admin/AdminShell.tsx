@@ -8,6 +8,7 @@ import { createClient } from "@/lib/supabase/client";
 const NAV = [
   { href: "/admin", label: "Főoldal", exact: true },
   { href: "/admin/products", label: "Áruház" },
+  { href: "/admin/availability", label: "Elérhetőség" },
   { href: "/admin/bookings", label: "Foglalások" },
   { href: "/admin/articles", label: "Tartalomkezelő" },
   { href: "/admin/users", label: "Felhasználókezelő" },

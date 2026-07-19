@@ -10,6 +10,7 @@ import {
   type BookingDraft,
 } from "@/lib/bookingSession";
 import { createClient } from "@/lib/supabase/client";
+import { validateSelectionsAgainstClosures } from "@/lib/validateBookingSelections";
 
 const MAX_PER_TYPE = 10;
 
@@ -159,6 +160,16 @@ export function CheckoutView() {
     if (!draft || !canPay || saving) return;
     setSaving(true);
     setSubmitError(null);
+
+    const validation = await validateSelectionsAgainstClosures(
+      draft.selections,
+    );
+    if (!validation.ok) {
+      setSaving(false);
+      setSubmitError(validation.message);
+      return;
+    }
+
     const supabase = createClient();
     const { error } = await supabase.from("pts_bookings").insert({
       product_slug: draft.slug,

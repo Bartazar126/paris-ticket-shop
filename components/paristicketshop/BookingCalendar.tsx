@@ -12,11 +12,20 @@ import {
   useState,
 } from "react";
 import {
+  attractionIdsForLegs,
+  getTimeSlotsForAttraction,
+  isDateFullyClosed,
+  isTimeClosed,
+  resolveAttractionId,
+  type AttractionClosure,
+} from "@/data/attractions";
+import {
   getBookingLegs,
   getTimeSlotsForLeg,
   type BookingLegSelection,
 } from "@/data/bookingLegs";
 import { saveBookingDraft } from "@/lib/bookingSession";
+import { fetchClosuresForAttractions } from "@/lib/validateBookingSelections";
 
 export type BookingCalendarHandle = {
   open: () => void;
@@ -44,6 +53,19 @@ function startOfToday(): Date {
   const d = new Date();
   d.setHours(0, 0, 0, 0);
   return d;
+}
+
+function toIsoDate(d: Date): string {
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
+function addDaysIso(iso: string, days: number): string {
+  const d = new Date(`${iso}T12:00:00`);
+  d.setDate(d.getDate() + days);
+  return toIsoDate(d);
 }
 
 function formatDisplayDate(iso: string): string {
@@ -100,6 +122,7 @@ export const BookingCalendar = forwardRef<
   const [pendingDate, setPendingDate] = useState<string | null>(null);
   const [pendingTime, setPendingTime] = useState<string | null>(null);
   const [byId, setById] = useState<Record<string, BookingLegSelection>>({});
+  const [closures, setClosures] = useState<AttractionClosure[]>([]);
   /** Prevents easepick from staying open unless we explicitly asked for it */
   const allowPickerShowRef = useRef(false);
 
@@ -108,8 +131,24 @@ export const BookingCalendar = forwardRef<
     byId: {} as Record<string, BookingLegSelection>,
     legs,
     isCombo,
+    closures: [] as AttractionClosure[],
   });
-  stateRef.current = { activeLegIndex, byId, legs, isCombo };
+  stateRef.current = { activeLegIndex, byId, legs, isCombo, closures };
+
+  const isDateLockedForLeg = useCallback(
+    (legId: string, iso: string): boolean => {
+      const attractionId = resolveAttractionId(legId);
+      const row = closures.find(
+        (c) =>
+          c.attraction_id === attractionId &&
+          c.closed_date.slice(0, 10) === iso,
+      );
+      if (!row) return false;
+      const slots = getTimeSlotsForAttraction(attractionId);
+      return isDateFullyClosed(row.closed_times, slots);
+    },
+    [closures],
+  );
 
   const showPicker = useCallback(() => {
     allowPickerShowRef.current = true;
@@ -122,10 +161,31 @@ export const BookingCalendar = forwardRef<
   }, []);
 
   const activeLeg = legs[activeLegIndex] ?? legs[0];
-  const timeSlots = useMemo(
-    () => getTimeSlotsForLeg(activeLeg?.id ?? ""),
-    [activeLeg?.id],
-  );
+  const timeSlots = useMemo(() => {
+    const all = getTimeSlotsForLeg(activeLeg?.id ?? "");
+    if (!pendingDate || !activeLeg) return all;
+    const attractionId = resolveAttractionId(activeLeg.id);
+    const row = closures.find(
+      (c) =>
+        c.attraction_id === attractionId &&
+        c.closed_date.slice(0, 10) === pendingDate,
+    );
+    if (!row) return all;
+    return all.filter((slot) => !isTimeClosed(row.closed_times, slot));
+  }, [activeLeg, closures, pendingDate]);
+
+  useEffect(() => {
+    const ids = attractionIdsForLegs(legs);
+    const from = toIsoDate(startOfToday());
+    const to = addDaysIso(from, 180);
+    let cancelled = false;
+    void fetchClosuresForAttractions(ids, from, to).then((rows) => {
+      if (!cancelled) setClosures(rows);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [legs]);
 
   const completedCount = legs.filter((leg) =>
     isLegComplete(leg.id, leg.needsTime, byId),
@@ -303,6 +363,21 @@ export const BookingCalendar = forwardRef<
                 ? date.format("YYYY-MM-DD")
                 : String(date);
             const leg = stateRef.current.legs[stateRef.current.activeLegIndex];
+            if (leg) {
+              const attractionId = resolveAttractionId(leg.id);
+              const row = stateRef.current.closures.find(
+                (c) =>
+                  c.attraction_id === attractionId &&
+                  c.closed_date.slice(0, 10) === iso,
+              );
+              if (row) {
+                const slots = getTimeSlotsForAttraction(attractionId);
+                if (isDateFullyClosed(row.closed_times, slots)) {
+                  p.clear?.();
+                  return;
+                }
+              }
+            }
             setPendingDate(iso);
             if (leg?.needsTime) {
               setView("time");
@@ -322,7 +397,30 @@ export const BookingCalendar = forwardRef<
           });
         },
         plugins: [LockPlugin],
-        LockPlugin: { minDate: startOfToday() },
+        LockPlugin: {
+          minDate: startOfToday(),
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          filter(date: any) {
+            const target = Array.isArray(date) ? date[0] : date;
+            if (!target) return false;
+            const iso =
+              typeof target.format === "function"
+                ? target.format("YYYY-MM-DD")
+                : String(target).slice(0, 10);
+            const leg =
+              stateRef.current.legs[stateRef.current.activeLegIndex];
+            if (!leg) return false;
+            const attractionId = resolveAttractionId(leg.id);
+            const row = stateRef.current.closures.find(
+              (c) =>
+                c.attraction_id === attractionId &&
+                c.closed_date.slice(0, 10) === iso,
+            );
+            if (!row) return false;
+            const slots = getTimeSlotsForAttraction(attractionId);
+            return isDateFullyClosed(row.closed_times, slots);
+          },
+        },
       });
 
       allowPickerShowRef.current = false;
@@ -349,9 +447,32 @@ export const BookingCalendar = forwardRef<
       if (view !== "date") hidePicker();
       return;
     }
+    try {
+      pickerRef.current?.gotoDate?.(startOfToday());
+      pickerRef.current?.renderAll?.();
+    } catch {
+      /* ignore */
+    }
     injectHeader();
     showPicker();
-  }, [hidePicker, injectHeader, isOpen, activeLegIndex, showPicker, view]);
+  }, [
+    closures,
+    hidePicker,
+    injectHeader,
+    isOpen,
+    activeLegIndex,
+    showPicker,
+    view,
+  ]);
+
+  useEffect(() => {
+    if (view !== "time" || !pendingDate || !activeLeg) return;
+    if (isDateLockedForLeg(activeLeg.id, pendingDate)) {
+      setPendingDate(null);
+      setPendingTime(null);
+      setView(isCombo ? "overview" : "date");
+    }
+  }, [activeLeg, isCombo, isDateLockedForLeg, pendingDate, view]);
 
   useEffect(() => {
     setBodyOpen(isOpen);
@@ -535,16 +656,23 @@ export const BookingCalendar = forwardRef<
           </div>
 
           <div className="pts-time-grid">
-            {timeSlots.map((slot) => (
-              <button
-                key={slot}
-                type="button"
-                className={`pts-time-slot${pendingTime === slot ? " is-selected" : ""}`}
-                onClick={() => setPendingTime(slot)}
-              >
-                {slot}
-              </button>
-            ))}
+            {timeSlots.length ? (
+              timeSlots.map((slot) => (
+                <button
+                  key={slot}
+                  type="button"
+                  className={`pts-time-slot${pendingTime === slot ? " is-selected" : ""}`}
+                  onClick={() => setPendingTime(slot)}
+                >
+                  {slot}
+                </button>
+              ))
+            ) : (
+              <p className="pts-booking-leg__meta pts-booking-leg__meta--muted">
+                No entry times available on this date. Please choose another
+                day.
+              </p>
+            )}
           </div>
 
           <div className="pts-booking-panel__actions">

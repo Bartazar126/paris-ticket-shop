@@ -54,7 +54,7 @@ function single(label: string, id: string, needsTime = true): BookingLeg[] {
  * Combos get one leg per attraction; the booking UI shows them as a clear list
  * so the shopper can choose (and change) each visit date/time.
  */
-const LEGS_BY_SLUG: Record<string, BookingLeg[]> = {
+export const LEGS_BY_SLUG: Record<string, BookingLeg[]> = {
   "paris-seine-river-cruise-1-hour-long-tour": single(
     "Seine River Cruise",
     "seine-cruise",
