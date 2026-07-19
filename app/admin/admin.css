@@ -722,12 +722,16 @@
   text-transform: capitalize;
 }
 
+.admin-avail-cal {
+  max-width: 28rem;
+}
+
 .admin-avail-weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 0.35rem;
-  margin-bottom: 0.35rem;
-  font-size: 0.7rem;
+  gap: 0.3rem;
+  margin-bottom: 0.3rem;
+  font-size: 0.68rem;
   font-weight: 700;
   color: var(--a-muted);
   text-align: center;
@@ -737,17 +741,16 @@
 .admin-avail-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 0.35rem;
+  gap: 0.3rem;
 }
 
 .admin-avail-day {
-  aspect-ratio: 1;
-  min-height: 2.5rem;
+  height: 2.35rem;
   border: 1px solid var(--a-border);
   border-radius: 6px;
   background: #fff;
   cursor: pointer;
-  padding: 0.25rem;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -755,8 +758,9 @@
 }
 
 .admin-avail-day__num {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 650;
+  line-height: 1;
 }
 
 .admin-avail-day.is-empty {

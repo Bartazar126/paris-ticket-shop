@@ -361,67 +361,73 @@ export function AvailabilityManager() {
               </p>
             )}
 
-            <div className="admin-avail-cal-head">
-              <button
-                type="button"
-                className="admin-btn admin-btn--light"
-                onClick={() => setMonth((m) => addMonths(m, -1))}
-              >
-                ←
-              </button>
-              <h3 className="admin-avail-month">{monthLabel(month)}</h3>
-              <button
-                type="button"
-                className="admin-btn admin-btn--light"
-                onClick={() => setMonth((m) => addMonths(m, 1))}
-              >
-                →
-              </button>
-            </div>
+            <div className="admin-avail-cal">
+              <div className="admin-avail-cal-head">
+                <button
+                  type="button"
+                  className="admin-btn admin-btn--light"
+                  onClick={() => setMonth((m) => addMonths(m, -1))}
+                >
+                  ←
+                </button>
+                <h3 className="admin-avail-month">{monthLabel(month)}</h3>
+                <button
+                  type="button"
+                  className="admin-btn admin-btn--light"
+                  onClick={() => setMonth((m) => addMonths(m, 1))}
+                >
+                  →
+                </button>
+              </div>
 
-            <div className="admin-avail-weekdays" aria-hidden="true">
-              {["H", "K", "Sze", "Cs", "P", "Szo", "V"].map((d) => (
-                <span key={d}>{d}</span>
-              ))}
-            </div>
+              <div className="admin-avail-weekdays" aria-hidden="true">
+                {["H", "K", "Sze", "Cs", "P", "Szo", "V"].map((d) => (
+                  <span key={d}>{d}</span>
+                ))}
+              </div>
 
-            <div className="admin-avail-grid">
-              {cells.map((cell, i) => {
-                if (!cell) {
-                  return <div key={`e-${i}`} className="admin-avail-day is-empty" />;
-                }
-                const iso = toIso(cell);
-                return (
-                  <button
-                    key={iso}
-                    type="button"
-                    className={dayClass(iso)}
-                    disabled={iso < todayIso}
-                    onClick={() => {
-                      setSelectedDate(iso);
-                      setStatus(null);
-                      setError(null);
-                    }}
-                    onDoubleClick={() => {
-                      if (iso < todayIso) return;
-                      void toggleFullDay(iso);
-                    }}
-                    title="Kattintás: nap részletei · Dupla kattintás: egész nap zárás/nyitás"
-                  >
-                    <span className="admin-avail-day__num">{cell.getDate()}</span>
-                  </button>
-                );
-              })}
-            </div>
+              <div className="admin-avail-grid">
+                {cells.map((cell, i) => {
+                  if (!cell) {
+                    return (
+                      <div key={`e-${i}`} className="admin-avail-day is-empty" />
+                    );
+                  }
+                  const iso = toIso(cell);
+                  return (
+                    <button
+                      key={iso}
+                      type="button"
+                      className={dayClass(iso)}
+                      disabled={iso < todayIso}
+                      onClick={() => {
+                        setSelectedDate(iso);
+                        setStatus(null);
+                        setError(null);
+                      }}
+                      onDoubleClick={() => {
+                        if (iso < todayIso) return;
+                        void toggleFullDay(iso);
+                      }}
+                      title="Kattintás: nap részletei · Dupla kattintás: egész nap zárás/nyitás"
+                    >
+                      <span className="admin-avail-day__num">
+                        {cell.getDate()}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
 
-            <div className="admin-avail-legend">
-              <span>
-                <i className="admin-avail-swatch is-full" /> Egész nap
-              </span>
-              <span>
-                <i className="admin-avail-swatch is-partial" /> Részleges
-              </span>
-              <span>Dupla kattintás = egész nap toggle</span>
+              <div className="admin-avail-legend">
+                <span>
+                  <i className="admin-avail-swatch is-full" /> Egész nap
+                </span>
+                <span>
+                  <i className="admin-avail-swatch is-partial" /> Részleges
+                </span>
+                <span>Dupla kattintás = egész nap toggle</span>
+              </div>
             </div>
           </div>
         </div>
