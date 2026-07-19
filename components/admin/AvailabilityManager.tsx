@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState, useTransition } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   BASE_ATTRACTIONS,
   getAffectedProducts,
@@ -44,7 +44,6 @@ function buildMonthCells(month: Date): (Date | null)[] {
     month.getMonth() + 1,
     0,
   ).getDate();
-  // Monday-first
   const weekday = (first.getDay() + 6) % 7;
   const cells: (Date | null)[] = Array.from({ length: weekday }, () => null);
   for (let day = 1; day <= daysInMonth; day += 1) {
@@ -52,6 +51,25 @@ function buildMonthCells(month: Date): (Date | null)[] {
   }
   while (cells.length % 7 !== 0) cells.push(null);
   return cells;
+}
+
+function dateKey(value: string): string {
+  return value.slice(0, 10);
+}
+
+function eachDateInclusive(from: string, to: string): string[] {
+  const start = new Date(`${from}T12:00:00`);
+  const end = new Date(`${to}T12:00:00`);
+  if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime()) || start > end) {
+    return [];
+  }
+  const out: string[] = [];
+  const cur = new Date(start);
+  while (cur <= end) {
+    out.push(toIso(cur));
+    cur.setDate(cur.getDate() + 1);
+  }
+  return out;
 }
 
 export function AvailabilityManager() {
@@ -63,9 +81,11 @@ export function AvailabilityManager() {
   const [counts, setCounts] = useState<Record<string, number>>({});
   const [status, setStatus] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [busy, startTransition] = useTransition();
+  const [loadingMonth, setLoadingMonth] = useState(false);
   const [rangeFrom, setRangeFrom] = useState("");
   const [rangeTo, setRangeTo] = useState("");
+  const closuresRef = useRef(closures);
+  closuresRef.current = closures;
 
   const attraction = useMemo(
     () => BASE_ATTRACTIONS.find((a) => a.id === selectedId) ?? BASE_ATTRACTIONS[0],
@@ -85,7 +105,7 @@ export function AvailabilityManager() {
   const byDate = useMemo(() => {
     const map = new Map<string, ClosureRow>();
     for (const row of closures) {
-      map.set(row.closed_date.slice(0, 10), row);
+      map.set(dateKey(row.closed_date), row);
     }
     return map;
   }, [closures]);
@@ -101,21 +121,55 @@ export function AvailabilityManager() {
     );
   }, [query]);
 
-  const loadMonth = useCallback(
-    async (attr: BaseAttraction, m: Date) => {
-      const { from, to } = rangeBounds(m);
-      const res = await fetch(
-        `/api/admin/availability?attractionId=${encodeURIComponent(attr.id)}&from=${from}&to=${to}`,
-      );
-      if (!res.ok) {
-        const body = (await res.json().catch(() => ({}))) as { error?: string };
-        throw new Error(body.error || "Nem sikerült betölteni a zárásokat");
-      }
-      const data = (await res.json()) as { closures: ClosureRow[] };
-      setClosures(data.closures ?? []);
+  const bumpCount = useCallback((attractionId: string, delta: number) => {
+    if (!delta) return;
+    setCounts((prev) => ({
+      ...prev,
+      [attractionId]: Math.max(0, (prev[attractionId] ?? 0) + delta),
+    }));
+  }, []);
+
+  const applyLocalUpsert = useCallback(
+    (attractionId: string, date: string, closedTimes: string[] | null) => {
+      const key = dateKey(date);
+      const had = closuresRef.current.some((c) => dateKey(c.closed_date) === key);
+      setClosures((prev) => {
+        const next = prev.filter((c) => dateKey(c.closed_date) !== key);
+        next.push({
+          attraction_id: attractionId,
+          closed_date: key,
+          closed_times: closedTimes,
+        });
+        next.sort((a, b) => a.closed_date.localeCompare(b.closed_date));
+        return next;
+      });
+      if (!had) bumpCount(attractionId, 1);
     },
-    [],
+    [bumpCount],
   );
+
+  const applyLocalOpen = useCallback(
+    (attractionId: string, date: string) => {
+      const key = dateKey(date);
+      const had = closuresRef.current.some((c) => dateKey(c.closed_date) === key);
+      setClosures((prev) => prev.filter((c) => dateKey(c.closed_date) !== key));
+      if (had) bumpCount(attractionId, -1);
+    },
+    [bumpCount],
+  );
+
+  const loadMonth = useCallback(async (attr: BaseAttraction, m: Date) => {
+    const { from, to } = rangeBounds(m);
+    const res = await fetch(
+      `/api/admin/availability?attractionId=${encodeURIComponent(attr.id)}&from=${from}&to=${to}`,
+    );
+    if (!res.ok) {
+      const body = (await res.json().catch(() => ({}))) as { error?: string };
+      throw new Error(body.error || "Nem sikerült betölteni a zárásokat");
+    }
+    const data = (await res.json()) as { closures: ClosureRow[] };
+    setClosures(data.closures ?? []);
+  }, []);
 
   const refreshCounts = useCallback(async () => {
     const today = toIso(new Date());
@@ -140,70 +194,105 @@ export function AvailabilityManager() {
   }, []);
 
   useEffect(() => {
+    void refreshCounts();
+  }, [refreshCounts]);
+
+  useEffect(() => {
     if (!attraction) return;
     let cancelled = false;
-    startTransition(() => {
-      void (async () => {
-        try {
-          setError(null);
-          await loadMonth(attraction, month);
-          if (!cancelled) await refreshCounts();
-        } catch (e) {
-          if (!cancelled) {
-            setError(e instanceof Error ? e.message : "Hiba");
-          }
+    setLoadingMonth(true);
+    void (async () => {
+      try {
+        setError(null);
+        await loadMonth(attraction, month);
+      } catch (e) {
+        if (!cancelled) {
+          setError(e instanceof Error ? e.message : "Hiba");
         }
-      })();
-    });
+      } finally {
+        if (!cancelled) setLoadingMonth(false);
+      }
+    })();
     return () => {
       cancelled = true;
     };
-  }, [attraction, loadMonth, month, refreshCounts]);
+  }, [attraction, loadMonth, month]);
 
   async function upsertDay(date: string, closedTimes: string[] | null) {
     if (!attraction) return;
+    const snapshot = closuresRef.current;
+    const countSnapshot = counts[attraction.id] ?? 0;
     setStatus(null);
     setError(null);
-    const res = await fetch("/api/admin/availability", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        attractionId: attraction.id,
-        date,
-        closedTimes,
-      }),
-    });
-    if (!res.ok) {
-      const body = (await res.json().catch(() => ({}))) as { error?: string };
-      setError(body.error || "Mentés sikertelen");
-      return;
-    }
+    applyLocalUpsert(attraction.id, date, closedTimes);
     setStatus("Mentve");
-    await loadMonth(attraction, month);
-    await refreshCounts();
+
+    try {
+      const res = await fetch("/api/admin/availability", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          attractionId: attraction.id,
+          date,
+          closedTimes,
+        }),
+      });
+      if (!res.ok) {
+        const body = (await res.json().catch(() => ({}))) as { error?: string };
+        throw new Error(body.error || "Mentés sikertelen");
+      }
+      const data = (await res.json()) as { closure?: ClosureRow };
+      if (data.closure) {
+        const key = dateKey(date);
+        setClosures((prev) => {
+          const next = prev.filter((c) => dateKey(c.closed_date) !== key);
+          next.push(data.closure!);
+          next.sort((a, b) => a.closed_date.localeCompare(b.closed_date));
+          return next;
+        });
+      }
+    } catch (e) {
+      setClosures(snapshot);
+      setCounts((prev) => ({ ...prev, [attraction.id]: countSnapshot }));
+      setStatus(null);
+      setError(e instanceof Error ? e.message : "Mentés sikertelen");
+    }
   }
 
   async function openDay(date: string) {
     if (!attraction) return;
+    const snapshot = closuresRef.current;
+    const countSnapshot = counts[attraction.id] ?? 0;
     setStatus(null);
     setError(null);
-    const res = await fetch("/api/admin/availability", {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ attractionId: attraction.id, date }),
-    });
-    if (!res.ok) {
-      const body = (await res.json().catch(() => ({}))) as { error?: string };
-      setError(body.error || "Megnyitás sikertelen");
-      return;
-    }
+    applyLocalOpen(attraction.id, date);
     setStatus("Nap megnyitva");
-    await loadMonth(attraction, month);
-    await refreshCounts();
+
+    try {
+      const res = await fetch("/api/admin/availability", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ attractionId: attraction.id, date }),
+      });
+      if (!res.ok) {
+        const body = (await res.json().catch(() => ({}))) as { error?: string };
+        throw new Error(body.error || "Megnyitás sikertelen");
+      }
+    } catch (e) {
+      setClosures(snapshot);
+      setCounts((prev) => ({ ...prev, [attraction.id]: countSnapshot }));
+      setStatus(null);
+      setError(e instanceof Error ? e.message : "Megnyitás sikertelen");
+    }
+  }
+
+  function closureForDate(date: string): ClosureRow | undefined {
+    const key = dateKey(date);
+    return closuresRef.current.find((c) => dateKey(c.closed_date) === key);
   }
 
   async function toggleFullDay(date: string) {
-    const existing = byDate.get(date);
+    const existing = closureForDate(date);
     if (existing && isFullDayClosure(existing.closed_times)) {
       await openDay(date);
       return;
@@ -212,7 +301,7 @@ export function AvailabilityManager() {
   }
 
   async function toggleSlot(date: string, slot: string) {
-    const existing = byDate.get(date);
+    const existing = closureForDate(date);
     if (!existing) {
       await upsertDay(date, [slot]);
       return;
@@ -246,26 +335,76 @@ export function AvailabilityManager() {
       setError("Add meg a tartomány kezdetét és végét");
       return;
     }
-    setStatus(null);
-    setError(null);
-    const res = await fetch("/api/admin/availability", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        attractionId: attraction.id,
-        from: rangeFrom,
-        to: rangeTo,
-        mode,
-      }),
-    });
-    if (!res.ok) {
-      const body = (await res.json().catch(() => ({}))) as { error?: string };
-      setError(body.error || "Tömeges művelet sikertelen");
+    const dates = eachDateInclusive(rangeFrom, rangeTo);
+    if (!dates.length) {
+      setError("Üres dátumtartomány");
       return;
     }
-    setStatus(mode === "close_days" ? "Tartomány lezárva" : "Tartomány megnyitva");
-    await loadMonth(attraction, month);
-    await refreshCounts();
+
+    const snapshot = closuresRef.current;
+    const countSnapshot = counts[attraction.id] ?? 0;
+    const { from: monthFrom, to: monthTo } = rangeBounds(month);
+    setStatus(null);
+    setError(null);
+
+    if (mode === "close_days") {
+      const existingKeys = new Set(snapshot.map((c) => dateKey(c.closed_date)));
+      const added = dates.filter((d) => !existingKeys.has(d)).length;
+      setClosures(() => {
+        const map = new Map(
+          snapshot
+            .filter((c) => {
+              const k = dateKey(c.closed_date);
+              return k >= monthFrom && k <= monthTo;
+            })
+            .map((c) => [dateKey(c.closed_date), c] as const),
+        );
+        for (const d of dates) {
+          if (d < monthFrom || d > monthTo) continue;
+          map.set(d, {
+            attraction_id: attraction.id,
+            closed_date: d,
+            closed_times: null,
+          });
+        }
+        return Array.from(map.values()).sort((a, b) =>
+          a.closed_date.localeCompare(b.closed_date),
+        );
+      });
+      bumpCount(attraction.id, added);
+      setStatus("Tartomány lezárva");
+    } else {
+      const existingKeys = new Set(snapshot.map((c) => dateKey(c.closed_date)));
+      const removed = dates.filter((d) => existingKeys.has(d)).length;
+      setClosures((prev) =>
+        prev.filter((c) => !dates.includes(dateKey(c.closed_date))),
+      );
+      bumpCount(attraction.id, -removed);
+      setStatus("Tartomány megnyitva");
+    }
+
+    try {
+      const res = await fetch("/api/admin/availability", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          attractionId: attraction.id,
+          from: rangeFrom,
+          to: rangeTo,
+          mode,
+        }),
+      });
+      if (!res.ok) {
+        const body = (await res.json().catch(() => ({}))) as { error?: string };
+        throw new Error(body.error || "Tömeges művelet sikertelen");
+      }
+      void refreshCounts();
+    } catch (e) {
+      setClosures(snapshot);
+      setCounts((prev) => ({ ...prev, [attraction.id]: countSnapshot }));
+      setStatus(null);
+      setError(e instanceof Error ? e.message : "Tömeges művelet sikertelen");
+    }
   }
 
   const cells = useMemo(() => buildMonthCells(month), [month]);
@@ -333,7 +472,7 @@ export function AvailabilityManager() {
         <div className="admin-card">
           <div className="admin-card-head">
             <span>{attraction.label}</span>
-            {busy ? (
+            {loadingMonth ? (
               <span className="admin-pill admin-pill--gray">Betöltés…</span>
             ) : null}
           </div>
@@ -457,7 +596,8 @@ export function AvailabilityManager() {
                     Összes slot megnyitás
                   </button>
                 </div>
-                {selectedClosure && isFullDayClosure(selectedClosure.closed_times) ? (
+                {selectedClosure &&
+                isFullDayClosure(selectedClosure.closed_times) ? (
                   <p className="admin-avail-hint">
                     Ez a nap teljesen zárva van. Nyisd meg, vagy kapcsolj ki
                     egyes időpontokat (ekkor részleges zárás lesz).
