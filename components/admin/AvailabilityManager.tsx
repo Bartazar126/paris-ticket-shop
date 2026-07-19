@@ -57,6 +57,24 @@ function dateKey(value: string): string {
   return value.slice(0, 10);
 }
 
+function formatHuDate(iso: string): string {
+  return new Date(`${dateKey(iso)}T12:00:00`).toLocaleDateString("hu-HU", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    weekday: "short",
+  });
+}
+
+type ToastKind = "closed" | "opened" | "error";
+
+type Toast = {
+  id: number;
+  kind: ToastKind;
+  title: string;
+  detail: string;
+};
+
 function eachDateInclusive(from: string, to: string): string[] {
   const start = new Date(`${from}T12:00:00`);
   const end = new Date(`${to}T12:00:00`);
@@ -79,13 +97,33 @@ export function AvailabilityManager() {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [closures, setClosures] = useState<ClosureRow[]>([]);
   const [counts, setCounts] = useState<Record<string, number>>({});
-  const [status, setStatus] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [toast, setToast] = useState<Toast | null>(null);
   const [loadingMonth, setLoadingMonth] = useState(false);
   const [rangeFrom, setRangeFrom] = useState("");
   const [rangeTo, setRangeTo] = useState("");
   const closuresRef = useRef(closures);
   closuresRef.current = closures;
+  const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const toastIdRef = useRef(0);
+
+  const showToast = useCallback(
+    (kind: ToastKind, title: string, detail: string) => {
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+      toastIdRef.current += 1;
+      const id = toastIdRef.current;
+      setToast({ id, kind, title, detail });
+      toastTimerRef.current = setTimeout(() => {
+        setToast((current) => (current?.id === id ? null : current));
+      }, 2800);
+    },
+    [],
+  );
+
+  useEffect(() => {
+    return () => {
+      if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+    };
+  }, []);
 
   const attraction = useMemo(
     () => BASE_ATTRACTIONS.find((a) => a.id === selectedId) ?? BASE_ATTRACTIONS[0],
@@ -203,11 +241,14 @@ export function AvailabilityManager() {
     setLoadingMonth(true);
     void (async () => {
       try {
-        setError(null);
         await loadMonth(attraction, month);
       } catch (e) {
         if (!cancelled) {
-          setError(e instanceof Error ? e.message : "Hiba");
+          showToast(
+            "error",
+            "Betöltési hiba",
+            e instanceof Error ? e.message : "Hiba",
+          );
         }
       } finally {
         if (!cancelled) setLoadingMonth(false);
@@ -216,16 +257,25 @@ export function AvailabilityManager() {
     return () => {
       cancelled = true;
     };
-  }, [attraction, loadMonth, month]);
+  }, [attraction, loadMonth, month, showToast]);
 
-  async function upsertDay(date: string, closedTimes: string[] | null) {
+  async function upsertDay(
+    date: string,
+    closedTimes: string[] | null,
+    toastMsg?: { kind: ToastKind; title: string; detail: string },
+  ) {
     if (!attraction) return;
     const snapshot = closuresRef.current;
     const countSnapshot = counts[attraction.id] ?? 0;
-    setStatus(null);
-    setError(null);
     applyLocalUpsert(attraction.id, date, closedTimes);
-    setStatus("Mentve");
+    showToast(
+      toastMsg?.kind ?? "closed",
+      toastMsg?.title ?? "Nap lezárva",
+      toastMsg?.detail ??
+        `${attraction.label} · ${formatHuDate(date)}${
+          closedTimes?.length ? ` · ${closedTimes.length} időpont` : ""
+        }`,
+    );
 
     try {
       const res = await fetch("/api/admin/availability", {
@@ -254,19 +304,27 @@ export function AvailabilityManager() {
     } catch (e) {
       setClosures(snapshot);
       setCounts((prev) => ({ ...prev, [attraction.id]: countSnapshot }));
-      setStatus(null);
-      setError(e instanceof Error ? e.message : "Mentés sikertelen");
+      showToast(
+        "error",
+        "Mentés sikertelen",
+        e instanceof Error ? e.message : "Ismeretlen hiba",
+      );
     }
   }
 
-  async function openDay(date: string) {
+  async function openDay(
+    date: string,
+    toastMsg?: { kind?: ToastKind; title: string; detail: string },
+  ) {
     if (!attraction) return;
     const snapshot = closuresRef.current;
     const countSnapshot = counts[attraction.id] ?? 0;
-    setStatus(null);
-    setError(null);
     applyLocalOpen(attraction.id, date);
-    setStatus("Nap megnyitva");
+    showToast(
+      toastMsg?.kind ?? "opened",
+      toastMsg?.title ?? "Nap megnyitva",
+      toastMsg?.detail ?? `${attraction.label} · ${formatHuDate(date)}`,
+    );
 
     try {
       const res = await fetch("/api/admin/availability", {
@@ -281,8 +339,11 @@ export function AvailabilityManager() {
     } catch (e) {
       setClosures(snapshot);
       setCounts((prev) => ({ ...prev, [attraction.id]: countSnapshot }));
-      setStatus(null);
-      setError(e instanceof Error ? e.message : "Megnyitás sikertelen");
+      showToast(
+        "error",
+        "Megnyitás sikertelen",
+        e instanceof Error ? e.message : "Ismeretlen hiba",
+      );
     }
   }
 
@@ -294,58 +355,90 @@ export function AvailabilityManager() {
   async function toggleFullDay(date: string) {
     const existing = closureForDate(date);
     if (existing && isFullDayClosure(existing.closed_times)) {
-      await openDay(date);
+      await openDay(date, {
+        title: "Nap megnyitva",
+        detail: `${attraction!.label} · ${formatHuDate(date)} — újra foglalható`,
+      });
       return;
     }
-    await upsertDay(date, null);
+    await upsertDay(date, null, {
+      kind: "closed",
+      title: "Nap lezárva",
+      detail: `${attraction!.label} · ${formatHuDate(date)} — egész nap`,
+    });
   }
 
   async function toggleSlot(date: string, slot: string) {
     const existing = closureForDate(date);
+    const label = attraction!.label;
+    const when = formatHuDate(date);
+
     if (!existing) {
-      await upsertDay(date, [slot]);
+      await upsertDay(date, [slot], {
+        kind: "closed",
+        title: "Időpont lezárva",
+        detail: `${label} · ${when} · ${slot}`,
+      });
       return;
     }
     if (isFullDayClosure(existing.closed_times)) {
       const next = slots.filter((s) => s !== slot);
       if (next.length === 0) {
-        await openDay(date);
+        await openDay(date, {
+          title: "Nap megnyitva",
+          detail: `${label} · ${when}`,
+        });
         return;
       }
-      await upsertDay(date, next);
+      await upsertDay(date, next, {
+        kind: "opened",
+        title: "Időpont megnyitva",
+        detail: `${label} · ${when} · ${slot}`,
+      });
       return;
     }
     const set = new Set(existing.closed_times ?? []);
-    if (set.has(slot)) set.delete(slot);
+    const wasClosed = set.has(slot);
+    if (wasClosed) set.delete(slot);
     else set.add(slot);
     const next = Array.from(set).sort();
     if (next.length === 0) {
-      await openDay(date);
+      await openDay(date, {
+        title: "Nap megnyitva",
+        detail: `${label} · ${when} — minden időpont szabad`,
+      });
       return;
     }
     if (slots.length && next.length === slots.length) {
-      await upsertDay(date, null);
+      await upsertDay(date, null, {
+        kind: "closed",
+        title: "Nap lezárva",
+        detail: `${label} · ${when} — egész nap`,
+      });
       return;
     }
-    await upsertDay(date, next);
+    await upsertDay(date, next, {
+      kind: wasClosed ? "opened" : "closed",
+      title: wasClosed ? "Időpont megnyitva" : "Időpont lezárva",
+      detail: `${label} · ${when} · ${slot}`,
+    });
   }
 
   async function runBulk(mode: "close_days" | "open_days") {
     if (!attraction || !rangeFrom || !rangeTo) {
-      setError("Add meg a tartomány kezdetét és végét");
+      showToast("error", "Hiányzó tartomány", "Add meg a kezdetet és a véget");
       return;
     }
     const dates = eachDateInclusive(rangeFrom, rangeTo);
     if (!dates.length) {
-      setError("Üres dátumtartomány");
+      showToast("error", "Üres tartomány", "Ellenőrizd a dátumokat");
       return;
     }
 
     const snapshot = closuresRef.current;
     const countSnapshot = counts[attraction.id] ?? 0;
     const { from: monthFrom, to: monthTo } = rangeBounds(month);
-    setStatus(null);
-    setError(null);
+    const rangeLabel = `${formatHuDate(rangeFrom)} → ${formatHuDate(rangeTo)}`;
 
     if (mode === "close_days") {
       const existingKeys = new Set(snapshot.map((c) => dateKey(c.closed_date)));
@@ -372,7 +465,11 @@ export function AvailabilityManager() {
         );
       });
       bumpCount(attraction.id, added);
-      setStatus("Tartomány lezárva");
+      showToast(
+        "closed",
+        "Tartomány lezárva",
+        `${attraction.label} · ${rangeLabel} · ${dates.length} nap`,
+      );
     } else {
       const existingKeys = new Set(snapshot.map((c) => dateKey(c.closed_date)));
       const removed = dates.filter((d) => existingKeys.has(d)).length;
@@ -380,7 +477,11 @@ export function AvailabilityManager() {
         prev.filter((c) => !dates.includes(dateKey(c.closed_date))),
       );
       bumpCount(attraction.id, -removed);
-      setStatus("Tartomány megnyitva");
+      showToast(
+        "opened",
+        "Tartomány megnyitva",
+        `${attraction.label} · ${rangeLabel} · ${dates.length} nap`,
+      );
     }
 
     try {
@@ -402,8 +503,11 @@ export function AvailabilityManager() {
     } catch (e) {
       setClosures(snapshot);
       setCounts((prev) => ({ ...prev, [attraction.id]: countSnapshot }));
-      setStatus(null);
-      setError(e instanceof Error ? e.message : "Tömeges művelet sikertelen");
+      showToast(
+        "error",
+        "Tömeges művelet sikertelen",
+        e instanceof Error ? e.message : "Ismeretlen hiba",
+      );
     }
   }
 
@@ -429,6 +533,31 @@ export function AvailabilityManager() {
 
   return (
     <div className="admin-avail">
+      {toast ? (
+        <div
+          key={toast.id}
+          className={`admin-toast admin-toast--${toast.kind}`}
+          role="status"
+          aria-live="polite"
+        >
+          <span className="admin-toast__icon" aria-hidden="true">
+            {toast.kind === "closed" ? "✕" : toast.kind === "opened" ? "✓" : "!"}
+          </span>
+          <div className="admin-toast__body">
+            <strong>{toast.title}</strong>
+            <span>{toast.detail}</span>
+          </div>
+          <button
+            type="button"
+            className="admin-toast__close"
+            aria-label="Bezárás"
+            onClick={() => setToast(null)}
+          >
+            ×
+          </button>
+        </div>
+      ) : null}
+
       <aside className="admin-avail-list admin-card">
         <div className="admin-card-head">Alap vonzerők</div>
         <div className="admin-card-body admin-avail-list__body">
@@ -448,8 +577,6 @@ export function AvailabilityManager() {
                   onClick={() => {
                     setSelectedId(attr.id);
                     setSelectedDate(null);
-                    setStatus(null);
-                    setError(null);
                   }}
                 >
                   <span>
@@ -494,12 +621,6 @@ export function AvailabilityManager() {
               ))}
             </div>
 
-            {(status || error) && (
-              <p className={error ? "admin-error" : "admin-ok"} role="status">
-                {error || status}
-              </p>
-            )}
-
             <div className="admin-avail-cal">
               <div className="admin-avail-cal-head">
                 <button
@@ -541,8 +662,6 @@ export function AvailabilityManager() {
                       disabled={iso < todayIso}
                       onClick={() => {
                         setSelectedDate(iso);
-                        setStatus(null);
-                        setError(null);
                       }}
                       onDoubleClick={() => {
                         if (iso < todayIso) return;
@@ -584,14 +703,25 @@ export function AvailabilityManager() {
                   <button
                     type="button"
                     className="admin-btn"
-                    onClick={() => void upsertDay(selectedDate, null)}
+                    onClick={() =>
+                      void upsertDay(selectedDate, null, {
+                        kind: "closed",
+                        title: "Nap lezárva",
+                        detail: `${attraction.label} · ${formatHuDate(selectedDate)} — egész nap`,
+                      })
+                    }
                   >
                     Egész nap zárás
                   </button>
                   <button
                     type="button"
                     className="admin-btn admin-btn--light"
-                    onClick={() => void openDay(selectedDate)}
+                    onClick={() =>
+                      void openDay(selectedDate, {
+                        title: "Nap megnyitva",
+                        detail: `${attraction.label} · ${formatHuDate(selectedDate)} — minden időpont szabad`,
+                      })
+                    }
                   >
                     Összes slot megnyitás
                   </button>
